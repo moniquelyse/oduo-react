@@ -1,0 +1,363 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(180deg, #A67AEC 0%, #4F62D8 100%);
+    background-attachment: fixed;
+}
+
+.phone-container {
+    width: 100%;
+    max-width: 428px;
+    height: 100vh;
+    position: fixed;
+    background-color: #14223b;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-bar {
+    background-color: #6C27D8;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-end;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.content-scroll {
+    flex: 1;
+    overflow-y: auto;
+    position: relative;
+    height: calc(100vh - 50px);
+}
+
+.learning-path {
+    position: relative;
+    padding: 40px 20px;
+    min-height: 100%;
+    padding-bottom: 100px;
+}
+
+.level {
+    width: 80px;
+    height: 76px;
+    background-size: 160px 76px;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 50%;
+    transform-origin: center;
+}
+
+/* Posicionamiento específico de cada nivel */
+/* Empezamos desde arriba, y el transform incluye tanto el -50% para centrar 
+   como el desplazamiento específico de cada nivel */
+
+.level[data-stage="past-1"] {
+    top: 40px;
+    transform: translateX(-50%);
+}
+
+.level[data-stage="past-2"] {
+    top: 136px;
+    transform: translateX(calc(-50% - 50px));
+}
+
+.level[data-stage="current"] {
+    top: 232px;
+    transform: translateX(calc(-50% - 75px));
+}
+
+.level[data-stage="future-1"] {
+    top: 328px;
+    transform: translateX(calc(-50% - 50px));
+}
+
+.level[data-stage="future-2"] {
+    top: 424px;
+    transform: translateX(-50%);
+}
+
+.level[data-stage="future-3"] {
+    top: 520px;
+    transform: translateX(calc(-50% + 50px));
+}
+
+/* Nuevos niveles agregados */
+.level[data-stage="future-4"] {
+    top: 616px;
+    transform: translateX(calc(-50% + 75px));
+}
+
+.level[data-stage="future-5"] {
+    top: 712px;
+    transform: translateX(calc(-50% + 50px));
+}
+
+.level[data-stage="future-6"] {
+    top: 808px;
+    transform: translateX(-50%);
+}
+
+/* Asignación de imágenes según tipo */
+.level.past {
+    background-image: url('img/stage-buttons/past.png');
+    background-position: 0 0;
+}
+
+.level.current {
+    background-image: url('img/stage-buttons/current.png');
+    background-position: 0 0;
+}
+
+.level.future {
+    background-image: url('img/stage-buttons/future.png');
+    background-position: 0 0;
+}
+
+/* Estados activos - manteniendo la posición horizontal */
+.level[data-stage="past-1"]:active {
+    transform: translateX(-50%) scale(0.95);
+}
+
+.level[data-stage="past-2"]:active {
+    transform: translateX(calc(-50% - 50px)) scale(0.95);
+}
+
+.level[data-stage="current"]:active {
+    transform: translateX(calc(-50% - 75px)) scale(0.95);
+}
+
+.level[data-stage="future-1"]:active {
+    transform: translateX(calc(-50% - 50px)) scale(0.95);
+}
+
+.level[data-stage="future-2"]:active {
+    transform: translateX(-50%) scale(0.95);
+}
+
+.level[data-stage="future-3"]:active {
+    transform: translateX(calc(-50% + 50px)) scale(0.95);
+}
+
+.level[data-stage="future-4"]:active {
+    transform: translateX(calc(-50% + 75px)) scale(0.95);
+}
+
+.level[data-stage="future-5"]:active {
+    transform: translateX(calc(-50% + 50px)) scale(0.95);
+}
+
+.level[data-stage="future-6"]:active {
+    transform: translateX(-50%) scale(0.95);
+}
+
+/* Cambio de sprite en estado activo */
+.level:active {
+    background-position: -80px 0;
+}
+
+.circle {
+    display: none;
+}
+
+.connector {
+    display: none;
+}
+
+/* Estados de los niveles */
+.level.completed .circle {
+    background-color: #ffd900;
+}
+
+.level.active .circle {
+    background-color: #58cc02;
+    border: 3px solid #46a302;
+}
+
+.level.active .circle span {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Estilos del Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 15px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-content.survey-content {
+    height: 90vh;
+    padding: 15px;
+}
+
+#modalBody {
+    width: 100%;
+    height: calc(100% - 50px); /* altura total menos el espacio del título */
+}
+
+.op-interactive {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.close:hover {
+    color: #666;
+}
+
+/* Contenedor principal que simula el smartphone */
+.phone-container {
+    width: 100%;
+    max-width: 428px;
+    min-height: 100vh;
+    position: relative;
+    background-color: #14223b;
+}
+
+/* Para el fondo de la página */
+.page-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('tu-imagen-de-fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+/* Estilos para el globo */
+.bubble-modal {
+    position: absolute;
+    background: #8951E0;
+    color: white;
+    border-radius: 12px;
+    padding: 20px;
+    width: 280px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    transform: none;
+    z-index: 100;
+    left: 50%;
+    margin-left: -140px; /* mitad del width */
+    pointer-events: none;
+}
+
+.bubble-modal.active {
+    pointer-events: auto;
+}
+
+.future-bubble {
+  background: #313E59;
+}
+
+.future-bubble .bubble-content {
+  color: #657BA8;
+}
+
+/* Flecha del globo */
+.bubble-modal:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    margin-left: -10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #8951E0;
+}
+
+/* Flecha del globo disabled */
+.bubble-modal.future-bubble:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  margin-left: -10px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #313e59;
+}
+
+/* Estado activo del globo */
+.bubble-modal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* Texto dentro del globo */
+.bubble-content {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+/* Botón de gaming */
+.gaming-button {
+    background: white;
+    color: #8951E0;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    box-shadow: 0 4px 0 rgb(255, 250, 255, 0.5);
+    transition: all 0.1s ease;
+}
+
+.gaming-button:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #4a1b96;
+}
+
+.gaming-button.disabled {
+  background: #435475;
+  box-shadow: 0 0px 0 #435475;
+  color: #657BA8;
+  pointer-events: none;
+}

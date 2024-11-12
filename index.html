@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Duolingo Demo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-background"></div>
+    <div class="phone-container">
+        <div class="top-bar">
+            <div class="stats">
+                <span class="gems">💎 500</span>
+                <span class="hearts">❤️ 5</span>
+            </div>
+        </div>
+        
+        <div class="content-scroll">
+            <div class="learning-path">
+                <!-- Etapas completadas (past) -->
+                <div class="level past" data-stage="past-1"></div>
+                <div class="level past" data-stage="past-2"></div>
+                
+                <!-- Etapa actual (current) -->
+                <div class="level current" data-stage="current"></div>
+                
+                <!-- Etapas futuras (future) -->
+                <div class="level future" data-stage="future-1"></div>
+                <div class="level future" data-stage="future-2"></div>
+                <div class="level future" data-stage="future-3"></div>
+                <div class="level future" data-stage="future-4"></div>
+                <div class="level future" data-stage="future-5"></div>
+                <div class="level future" data-stage="future-6"></div>
+            </div>
+        </div>
+
+        <!-- Modal para información -->
+        <div id="infoModal" class="modal">
+            <div class="modal-content" id="modalContent">
+                <span class="close">&times;</span>
+                <h2 id="modalTitle">Información</h2>
+                <div id="modalBody"></div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </div>
+</body>
+</html>

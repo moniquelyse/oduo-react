@@ -1,0 +1,10 @@
+/* Copiar los estilos relevantes del Stage desde global.css */
+.stage {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Copiar el resto de los estilos del Stage desde las líneas 94-258 de global.css */ 

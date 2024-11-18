@@ -74,6 +74,12 @@ document.addEventListener('DOMContentLoaded', () => {
             newBubble.style.setProperty('--arrow-margin-left', `${halfMargin}px`);
           }
         }
+        
+        // Después de crear el bubble, verificar si está visible
+        const newBubble = document.querySelector('.bubble:not([style*="display: none"])');
+        if (newBubble && !isElementInViewport(newBubble, 100)) {
+          scrollToElement(newBubble, 100);
+        }
       }
     });
   });
@@ -156,3 +162,21 @@ document.querySelector('.drawer-close').addEventListener('click', (e) => {
     drawer.style.display = 'none';
   }, 300);
 });
+
+// Función auxiliar para verificar si el elemento está visible
+function isElementInViewport(el, margin = 100) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.bottom <= (window.innerHeight - margin)
+  );
+}
+
+// Función para hacer scroll suave
+function scrollToElement(el, margin = 100) {
+  const rect = el.getBoundingClientRect();
+  const scrollNeeded = window.pageYOffset + rect.bottom - (window.innerHeight - margin);
+  window.scrollTo({
+    top: scrollNeeded,
+    behavior: 'smooth'
+  });
+}

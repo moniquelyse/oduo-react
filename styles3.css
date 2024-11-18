@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Zilla Slab', serif;
+  background-color: #000;
+  color: #fff;
+}
+
+.container {
+  background: linear-gradient(90deg, black, #1d202c, black);
+  max-width: 430px;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+}
+
+.container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  background: url(img/noise.svg);
+}
+
+.logo {
+  width: 48px;
+  margin: 0 auto 40px;
+  display: block;
+}
+
+.content {
+  text-align: center;
+  position: relative;
+}
+
+.overline {
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.intro {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  max-width: 320px;
+  margin: 0 auto 48px;
+}
+
+.stages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+}
+
+/* centered 1,5,9,13… */
+.stage:nth-child(4n+1) { margin: 0; }
+
+/* 50L pares cada 2 partiendo del 2; 2,4,10,12… */
+.stage:nth-child(8n+2), .stage:nth-child(8n+4) { margin-left: -50px; }
+
+/* 75 L 8 en 8 partiendo del 3 */
+.stage:nth-child(8n+3) { margin-left: -75px; }
+
+/* 50R pares cada 2 partiendo del 6; 6,8,14,16… */
+.stage:nth-child(8n+6), .stage:nth-child(8n+8) { margin-right: -50px; }
+
+/* 75 R 8 en 8 partiendo del 7 */
+.stage:nth-child(8n+7) { margin-right: -75px; }
+
+.stage-top-platform {
+  width: 64px;
+  height: 64px;
+  background: rgb(140 86 225);
+  border-radius: 8px;
+  transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg);
+  z-index: 1;
+  animation: float 3s ease-in-out infinite;
+}
+
+.stage.disabled .stage-top-platform {
+  background: rgb(66 78 108);
+  animation: floatDisabled 3s ease-in-out infinite;
+}
+
+.stage-bottom-platform {
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg);
+  margin-top: -44px;
+}
+
+.oinc {
+  position: absolute;
+  top: 400px;
+  right: 10%;
+  width: 120px;
+  height: auto;
+}
+
+@media (max-width: 430px) {
+  .container {
+      padding: 16px;
+  }
+  
+  .title {
+      font-size: 2rem;
+  }
+  
+  .intro {
+      font-size: 1.125rem;
+      padding: 0 16px;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(0, 0, 10px);
+  }
+  100% {
+    transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes floatDisabled {
+  0% {
+    transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(0, 0, 5px);
+  }
+  100% {
+    transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(0, 0, 0);
+  }
+}

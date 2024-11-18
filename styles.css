@@ -19,28 +19,27 @@ body {
 }
 
 .top-bar {
-    background-color: #6C27D8;
+    background-color: #14223b;
     color: white;
-    padding: 10px 20px;
+    padding: 0 30px;
     display: flex;
-    justify-content: flex-end;
-    position: sticky;
-    top: 0;
+    justify-content: space-around;
+    align-items: center;
     z-index: 10;
+    height: 48px;
 }
 
 .content-scroll {
     flex: 1;
     overflow-y: auto;
     position: relative;
-    height: calc(100vh - 50px);
+    padding-top: 20px;
 }
 
 .learning-path {
     position: relative;
-    padding: 40px 20px;
+    padding: 20px;
     min-height: 100%;
-    padding-bottom: 100px;
 }
 
 .level {
@@ -263,18 +262,15 @@ body {
 /* Estilos para el globo */
 .bubble-modal {
     position: absolute;
-    background: #8951E0;
-    color: white;
+    background: white;
     border-radius: 12px;
     padding: 20px;
     width: 280px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    opacity: 1;
-    transform: none;
     z-index: 100;
     left: 50%;
-    margin-left: -140px; /* mitad del width */
-    pointer-events: none;
+    transform: translateX(-50%);
+    pointer-events: auto;
 }
 
 .bubble-modal.active {
@@ -360,4 +356,40 @@ body {
   box-shadow: 0 0px 0 #435475;
   color: #657BA8;
   pointer-events: none;
+}
+.game-banner {
+    background: #8951E0;
+    padding: 30px 20px;
+    position: relative;
+    text-align: center;
+    z-index: 5;
+    border-radius: 24px;
+    position: absolute;
+    top: 48px;
+    left: 30px;
+    right: 30px;
+    box-shadow: 0 4px 0 #6b3ab8;
+}
+
+.game-banner h1 {
+    color: white;
+    font-size: 28px;
+    margin: 0;
+    letter-spacing: 2px;
+    font-weight: 800;
+}
+
+.banner-decoration {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.1),
+        rgba(255,255,255,0.1) 10px,
+        rgba(255,255,255,0.2) 10px,
+        rgba(255,255,255,0.2) 20px
+    );
 }

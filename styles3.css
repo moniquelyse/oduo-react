@@ -227,9 +227,6 @@ body {
   width: 340px;
   left: calc(50% - 170px);
 }
-.bubble.disabled {
-  background: #1d202c;
-}
 .bubble-title {
   font-size: 1.5rem;
   font-weight: 500;
@@ -267,12 +264,20 @@ body {
   margin-left: var(--arrow-margin-left, 0);
   margin-right: var(--arrow-margin-right, 0);
 }
+/* bubble disabled */
+.bubble.disabled {
+  background: #424e6c;
+}
 .bubble.disabled:after {
-  background: #1d202c;
+  background: #424e6c;
+}
+.bubble.disabled .bubble-title,
+.bubble.disabled .bubble-text {
+  color: rgba(255, 255, 255, 0.5);
 }
 .bubble.disabled .bubble-button {
   background: rgba(255, 255, 255, 0.5);
-  color: #1d202c;
+  color: #424e6c;
   box-shadow: 0px 4px 0px rgb(255 255 255 / 25%);
   pointer-events: none;
 }

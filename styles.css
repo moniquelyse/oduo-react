@@ -75,7 +75,7 @@ body {
 .credits {
   color: #424e6c;
   font-size: 0.875rem;
-  padding-top: 200px;
+  padding-top: 120px;
   padding-bottom: 20px;
   text-align: center;
   background: linear-gradient(00deg, black, transparent);
@@ -150,6 +150,33 @@ body {
   margin-top: -44px;
 }
 
+.glowing-stage {
+  -webkit-animation: glowing 1s ease-in-out infinite alternate;
+  -moz-animation: glowing 1s ease-in-out infinite alternate;
+  animation: glowing 1s ease-in-out infinite alternate;
+}
+@keyframes glowing {
+  from {
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #f0f, 0 0 40px #0ff, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    box-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+
+.chapter:not(:first-child) {
+  margin-top: 52px;
+}
+
+.lock {
+  width: 30px;
+  margin-bottom: 20px;
+}
+
+.chapter.disabled {
+  opacity: 0.35;
+}
+
 .oinc {
   position: absolute;
   top: 392px;
@@ -160,8 +187,8 @@ body {
 
 .coin {
   position: absolute;
-  top: 880px;
-  left: 40px;
+  top: 800px;
+  left: 20px;
   width: 130px;
   height: auto;
 }
@@ -253,7 +280,7 @@ body {
   max-width: 100%;
 }
 .bubble-title {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 500;
   margin-bottom: 8px;
 }

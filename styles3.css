@@ -96,13 +96,26 @@ body {
   height: 64px;
   background: rgb(140 86 225);
   border-radius: 8px;
-  transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg);
+  transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(0, 0, 0);
   z-index: 1;
+}
+
+/* Plataforma normal (no disabled) */
+.stage:not(.disabled) .stage-top-platform {
   animation: float 3s ease-in-out infinite;
 }
 
+/* Estado presionado para TODAS las plataformas */
+.stage-top-platform.pressed {
+  animation: pressAnimation 0.3s ease-out forwards !important;
+}
+
+/* Estado disabled (solo cambia el color y la animación de flotación) */
 .stage.disabled .stage-top-platform {
   background: rgb(66 78 108);
+}
+
+.stage.disabled .stage-top-platform:not(.pressed) {
   animation: floatDisabled 3s ease-in-out infinite;
 }
 
@@ -159,5 +172,15 @@ body {
   }
   100% {
     transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(0, 0, 0);
+  }
+}
+
+/* Nuevo keyframe para la animación de presionar */
+@keyframes pressAnimation {
+  from {
+    transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(0, 0, 0);
+  }
+  to {
+    transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(25px, 25px, 0);
   }
 }

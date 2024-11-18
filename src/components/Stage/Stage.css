@@ -1,4 +1,40 @@
-/* Copiar los estilos relevantes del Stage desde global.css */
+/* Los contenedores de stage */
+.stages > div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Posiciones especiales para los stages */
+/* centered 1,5,9,13… */
+.stages > div:nth-child(4n+1) { 
+  margin: 0; 
+}
+
+/* 50L pares cada 2 partiendo del 2; 2,4,10,12… */
+.stages > div:nth-child(8n+2), 
+.stages > div:nth-child(8n+4) { 
+  margin-left: -50px; 
+}
+
+/* 75 L 8 en 8 partiendo del 3 */
+.stages > div:nth-child(8n+3) { 
+  margin-left: -75px; 
+}
+
+/* 50R pares cada 2 partiendo del 6; 6,8,14,16… */
+.stages > div:nth-child(8n+6), 
+.stages > div:nth-child(8n+8) { 
+  margin-right: -50px; 
+}
+
+/* 75 R 8 en 8 partiendo del 7 */
+.stages > div:nth-child(8n+7) { 
+  margin-right: -75px; 
+}
+
+/* Estilos base del stage */
 .stage {
   position: relative;
   z-index: 1;
@@ -7,4 +43,7 @@
   transform: translate3d(0, 0, 0);
 }
 
-/* Copiar el resto de los estilos del Stage desde las líneas 94-258 de global.css */ 
+/* Aseguramos que el bubble esté por encima de los stages siguientes */
+.bubble-container {
+  z-index: 50;
+} 

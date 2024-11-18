@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
           // Calculamos la posición vertical
           const stageRect = stage.getBoundingClientRect();
           const stagesRect = document.querySelector('.stages').getBoundingClientRect();
-          const topPosition = stageRect.top - stagesRect.top + stageRect.height + 220;
+          const topPosition = stageRect.top - stagesRect.top + stageRect.height + 206;
           
           // Aplicamos la posición
           newBubble.style.top = `${topPosition}px`;

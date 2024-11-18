@@ -184,3 +184,18 @@ body {
     transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(25px, 25px, 0);
   }
 }
+
+/* Estado release */
+.stage-top-platform.release {
+  animation: releaseAnimation 0.2s ease-in forwards !important;
+}
+
+/* Nuevo keyframe para la animación de release */
+@keyframes releaseAnimation {
+  from {
+    transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(25px, 25px, 0);
+  }
+  to {
+    transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(0, 0, 0);
+  }
+}

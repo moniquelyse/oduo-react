@@ -1,110 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ordenar.me</title>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-    <link rel="shortcut icon" href="img/favicon.ico">
-</head>
-<body>
-    <main class="container">
-
-        <div class="logo-container">
-            <img src="img/o-logo.svg" alt="Logo" class="logo">
-        </div>
-        
-        <div class="content">
-            <div class="chapter">
-                <p class="overline">CAPÍTULO I</p>
-                <h1 class="title">LA INICIACIÓN</h1>
-                <p class="intro">El aprendiz se compromete a hacer las misiones que se le encomiendan</p>
-                
-                <div class="stages stages-1">
-                    <div class="stage">
-                        <div class="stage-top-platform"></div>
-                        <div class="stage-bottom-platform glowing-stage"></div>
-                    </div>
-                    <div class="stage disabled">
-                        <div class="stage-top-platform"></div>
-                        <div class="stage-bottom-platform"></div>
-                    </div>
-                    <div class="stage disabled">
-                        <div class="stage-top-platform"></div>
-                        <div class="stage-bottom-platform"></div>
-                    </div>
-                    <div class="stage disabled">
-                        <div class="stage-top-platform"></div>
-                        <div class="stage-bottom-platform"></div>
-                    </div>
-                    <div class="stage disabled">
-                        <div class="stage-top-platform"></div>
-                        <div class="stage-bottom-platform"></div>
-                    </div>
-                    <div class="stage disabled">
-                        <div class="stage-top-platform"></div>
-                        <div class="stage-bottom-platform"></div>
-                    </div>
-                    <div class="stage disabled">
-                        <div class="stage-top-platform"></div>
-                        <div class="stage-bottom-platform"></div>
-                    </div>
-                    <div class="stage disabled">
-                        <div class="stage-top-platform"></div>
-                        <div class="stage-bottom-platform"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="chapter disabled">
-                <img src="img/lock.svg" alt="Lock" class="lock">
-                <p class="overline">CAPÍTULO II</p>
-                <h1 class="title">LA CALIBRACIÓN</h1>
-                <p class="intro">Completa cada capítulo para desbloquear el siguiente.</p>
-            </div>
-            
-            <div class="bubble-container">
-                <div class="bubble normal" style="display: none;">
-                    <div class="bubble-title">Title Normal</div>
-                    <div class="bubble-text">Text normal...</div>
-                    <a href="#" class="bubble-button">Empezar</a>
-                </div>
-                
-                <div class="bubble disabled" style="display: none;">
-                    <div class="bubble-title">Title Disabled</div>
-                    <div class="bubble-text">Text disabled...</div>
-                    <a href="#" class="bubble-button">Cerrada</a>
-                </div>
-            </div>
-
-            <img src="img/oinc-linear.png" alt="Oinc" class="oinc">
-            <img src="img/coin-linear.png" alt="Coin" class="coin">
-
-            <div class="credits">
-                <p>2024 Ordenar.me ® Todos los derechos reservados</p>
-            </div>
-        </div>
-    </main>
-    <div class="drawer-modal" style="display: none;">
-        <div class="drawer-overlay"></div>
-        <div class="drawer-content">
-            <button class="drawer-close">&times;</button>
-            <iframe id='og_iframe_temp' 
-                    allow='camera *;' 
-                    scrolling='auto' 
-                    style='width: 100%; height: 100%; margin: 0; border: none;' 
-                    src='' 
-                    title='Personalidad Financiera'>
-            </iframe>
-        </div>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
+    <title>Ordenar.me</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html> 

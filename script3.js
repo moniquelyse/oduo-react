@@ -78,3 +78,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.bubble:not(.disabled) .bubble-button')) {
+    const drawer = document.querySelector('.drawer-modal');
+    drawer.style.display = 'flex';
+    // Forzar un reflow
+    drawer.offsetHeight;
+    drawer.classList.add('open');
+    
+    // Guardar posición actual del scroll y bloquear manteniendo la posición visual
+    const scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+    drawer.dataset.scrollPosition = scrollY;
+  }
+});
+
+document.querySelector('.drawer-overlay').addEventListener('click', (e) => {
+  const drawer = e.target.closest('.drawer-modal');
+  drawer.classList.remove('open');
+  
+  // Restaurar scroll manteniendo la posición visual
+  const scrollY = parseInt(drawer.dataset.scrollPosition || '0');
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.width = '';
+  window.scrollTo(0, scrollY);
+  
+  // Esperar a que termine la animación
+  setTimeout(() => {
+    drawer.style.display = 'none';
+  }, 300);
+});

@@ -40,6 +40,7 @@
   text-align: center;
   text-decoration: none;
   font-weight: 700;
+  font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   display: block;
@@ -53,11 +54,11 @@
   content: '';
   position: absolute;
   top: -8px;
-  left: 50%;
   width: 16px;
   height: 16px;
   background: rgb(140 86 225);
-  transform: rotate(45deg) translate(-50%, 0);
+  transform: rotate(45deg) translate(-5.5px, 5.5px);
+  left: 50%;
 }
 
 /* bubble disabled */

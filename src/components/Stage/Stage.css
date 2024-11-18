@@ -47,3 +47,112 @@
 .bubble-container {
   z-index: 50;
 } 
+
+
+
+
+
+
+/*css de mi versión original*/
+
+.stages {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.stage {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* centered 1,5,9,13… */
+.stage:nth-child(4n+1) { margin: 0; }
+
+/* 50L pares cada 2 partiendo del 2; 2,4,10,12… */
+.stage:nth-child(8n+2), .stage:nth-child(8n+4) { margin-left: -50px; }
+
+/* 75 L 8 en 8 partiendo del 3 */
+.stage:nth-child(8n+3) { margin-left: -75px; }
+
+/* 50R pares cada 2 partiendo del 6; 6,8,14,16… */
+.stage:nth-child(8n+6), .stage:nth-child(8n+8) { margin-right: -50px; }
+
+/* 75 R 8 en 8 partiendo del 7 */
+.stage:nth-child(8n+7) { margin-right: -75px; }
+
+.stage-top-platform {
+  width: 64px;
+  height: 64px;
+  background: rgb(140 86 225);
+  border-radius: 8px;
+  transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(0, 0, 0);
+  z-index: 1;
+}
+
+/* Plataforma normal (no disabled) */
+.stage:not(.disabled) .stage-top-platform {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Estado presionado para TODAS las plataformas */
+.stage-top-platform.pressed {
+  animation: pressAnimation 0.3s ease-out forwards !important;
+}
+
+/* Estado disabled (solo cambia el color y la animación de flotación) */
+.stage.disabled .stage-top-platform {
+  background: rgb(66 78 108);
+}
+
+.stage.disabled .stage-top-platform:not(.pressed) {
+  animation: floatDisabled 3s ease-in-out infinite;
+}
+
+.stage-bottom-platform {
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg);
+  margin-top: -44px;
+}
+
+.glowing-stage {
+  -webkit-animation: glowing 1s ease-in-out infinite alternate;
+  -moz-animation: glowing 1s ease-in-out infinite alternate;
+  animation: glowing 1s ease-in-out infinite alternate;
+}
+@keyframes glowing {
+  from {
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #f0f, 0 0 40px #0ff, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    box-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+
+/* Estado release */
+.stage-top-platform.release {
+  animation: releaseAnimation 0.2s ease-in forwards !important;
+}
+
+/* Nuevo keyframe para la animación de release */
+@keyframes releaseAnimation {
+  from {
+    transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(25px, 25px, 0);
+  }
+  to {
+    transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(0, 0, 0);
+  }
+}
+.stage.active {
+  position: relative;
+  z-index: 30;
+}

@@ -326,12 +326,13 @@ body {
   background: #fff;
   width: 100%;
   max-width: 430px;
-  height: 80vh;
-  margin: 0 auto;
+  margin: 40px auto 0 auto; /* 40px fix branding */
   border-radius: 16px 16px 0 0;
   transform: translateY(100%);
   transition: transform 0.3s ease;
   position: relative;
+  height: calc(100vh + 40px); /* fix branding */
+  top: 40px; /* fix branding */
 }
 
 /* Clases para la animación */
@@ -341,4 +342,29 @@ body {
 
 .drawer-modal.open .drawer-content {
   transform: translateY(0);
+}
+
+/* Agregar estos estilos */
+.drawer-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.drawer-close:hover {
+  background: rgba(0, 0, 0, 0.7);
 }

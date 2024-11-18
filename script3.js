@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
           // Calculamos la posición vertical
           const stageRect = stage.getBoundingClientRect();
           const stagesRect = document.querySelector('.stages').getBoundingClientRect();
-          const topPosition = stageRect.top - stagesRect.top + stageRect.height + 206;
+          const topPosition = stageRect.top - stagesRect.top + stageRect.height + 220;
           
           // Aplicamos la posición
           newBubble.style.top = `${topPosition}px`;
@@ -81,22 +81,66 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('click', (e) => {
   if (e.target.closest('.bubble:not(.disabled) .bubble-button')) {
+    // Cerrar la bubble
+    const activeBubble = document.querySelector('.bubble:not([style*="display: none"])');
+    if (activeBubble) {
+      activeBubble.remove();
+    }
+    
+    // Liberar la plataforma presionada
+    const pressedPlatform = document.querySelector('.stage-top-platform.pressed');
+    if (pressedPlatform) {
+      pressedPlatform.classList.remove('pressed');
+      pressedPlatform.classList.add('release');
+      pressedPlatform.closest('.stage').classList.remove('active');
+      
+      pressedPlatform.addEventListener('animationend', () => {
+        pressedPlatform.classList.remove('release');
+      }, { once: true });
+    }
+
+    // Abrir el drawer (código existente)
     const drawer = document.querySelector('.drawer-modal');
     drawer.style.display = 'flex';
-    // Forzar un reflow
     drawer.offsetHeight;
     drawer.classList.add('open');
     
-    // Guardar posición actual del scroll y bloquear manteniendo la posición visual
+    // Guardar posición del scroll
     const scrollY = window.scrollY;
     document.body.style.position = 'fixed';
     document.body.style.top = `-${scrollY}px`;
     document.body.style.width = '100%';
     drawer.dataset.scrollPosition = scrollY;
+
+    // Configurar el iframe
+    var og_embedURL = 'https://ordenarme.outgrow.us/63a4a9707a8478521053b9e1?custom=1';
+    var og_urlParameters = window.location.search;
+    og_urlParameters = og_urlParameters.substring(1);
+    if (og_urlParameters.length) {
+      og_embedURL = og_embedURL + '&' + og_urlParameters;
+    }
+    document.getElementById('og_iframe_temp').src = og_embedURL;
   }
 });
 
 document.querySelector('.drawer-overlay').addEventListener('click', (e) => {
+  const drawer = e.target.closest('.drawer-modal');
+  drawer.classList.remove('open');
+  
+  // Restaurar scroll manteniendo la posición visual
+  const scrollY = parseInt(drawer.dataset.scrollPosition || '0');
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.width = '';
+  window.scrollTo(0, scrollY);
+  
+  // Esperar a que termine la animación
+  setTimeout(() => {
+    drawer.style.display = 'none';
+  }, 300);
+});
+
+document.querySelector('.drawer-close').addEventListener('click', (e) => {
   const drawer = e.target.closest('.drawer-modal');
   drawer.classList.remove('open');
   

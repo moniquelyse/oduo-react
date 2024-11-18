@@ -150,19 +150,18 @@ body {
 
 .oinc {
   position: absolute;
-  top: 400px;
-  right: 10%;
-  width: 120px;
+  top: 392px;
+  right: 10px;
+  width: 130px;
   height: auto;
 }
 
 .coin {
   position: absolute;
-  top: 888px;
-  left: 50px;
-  width: 110px;
+  top: 880px;
+  left: 40px;
+  width: 130px;
   height: auto;
-  opacity: 0.5;
 }
 
 @media (max-width: 430px) {

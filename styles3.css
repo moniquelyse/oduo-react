@@ -16,7 +16,7 @@ body {
   width: 100%;
   min-height: 100vh;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 20px;
   position: relative;
   z-index: 1;
 }
@@ -32,6 +32,11 @@ body {
   mix-blend-mode: soft-light;
   pointer-events: none;
   background: url(img/noise.svg);
+}
+
+.logo-container {
+  padding-top: 40px;
+  background: linear-gradient(180deg, black, transparent);
 }
 
 .logo {
@@ -63,6 +68,15 @@ body {
   line-height: 1.5;
   max-width: 320px;
   margin: 0 auto 48px;
+}
+
+.credits {
+  color: #424e6c;
+  font-size: 0.875rem;
+  padding-top: 200px;
+  padding-bottom: 20px;
+  text-align: center;
+  background: linear-gradient(00deg, black, transparent);
 }
 
 .stages {
@@ -140,6 +154,15 @@ body {
   right: 10%;
   width: 120px;
   height: auto;
+}
+
+.coin {
+  position: absolute;
+  top: 888px;
+  left: 50px;
+  width: 110px;
+  height: auto;
+  opacity: 0.5;
 }
 
 @media (max-width: 430px) {
@@ -327,7 +350,6 @@ body {
   width: 100%;
   max-width: 430px;
   margin: 40px auto 0 auto; /* 40px fix branding */
-  border-radius: 16px 16px 0 0;
   transform: translateY(100%);
   transition: transform 0.3s ease;
   position: relative;

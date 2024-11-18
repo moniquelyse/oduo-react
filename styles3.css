@@ -223,12 +223,9 @@ body {
   padding: 24px;
   border-radius: 16px;
   text-align: left;
-  margin: 0 20px;
   z-index: 20;
-  max-width: 430px;
-  width: calc(100% - 40px);
-  left: 50%;
-  transform: translateX(-50%);
+  width: 340px;
+  left: calc(50% - 170px);
 }
 .bubble.disabled {
   background: #1d202c;
@@ -265,8 +262,8 @@ body {
   width: 16px;
   height: 16px;
   background: rgb(140 86 225);
-  transform: rotate(45deg);
-  left: calc(50% - 8px);
+  transform: rotate(45deg) translate(-6px, 6px);
+  left: 50%;
   margin-left: var(--arrow-margin-left, 0);
   margin-right: var(--arrow-margin-right, 0);
 }

@@ -65,10 +65,16 @@ document.addEventListener('DOMContentLoaded', () => {
           const marginRight = window.getComputedStyle(stage).marginRight;
           
           if (marginLeft !== '0px') {
-            newBubble.style.setProperty('--arrow-margin-left', marginLeft);
+            // Convertimos el margen a número y calculamos la mitad
+            const marginValue = parseInt(marginLeft);
+            const halfMargin = marginValue / 2 + 'px';
+            newBubble.style.setProperty('--arrow-margin-left', halfMargin);
           }
           if (marginRight !== '0px') {
-            newBubble.style.setProperty('--arrow-margin-right', marginRight);
+            // Convertimos el margen a número y calculamos la mitad
+            const marginValue = parseInt(marginRight);
+            const halfMargin = marginValue / 2 + 'px';
+            newBubble.style.setProperty('--arrow-margin-right', halfMargin);
           }
         }
       }

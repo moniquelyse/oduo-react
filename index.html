@@ -3,48 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini Duolingo Demo</title>
+    <title>O-Duo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="page-background"></div>
-    <div class="phone-container">
-        <div class="top-bar">
-            <div class="stats">
-                <span class="gems">💎 500</span>
-                <span class="hearts">❤️ 5</span>
-            </div>
+    <main class="container">
+
+        <div class="logo-container">
+            <img src="img/o-logo.svg" alt="Logo" class="logo">
         </div>
         
-        <div class="content-scroll">
-            <div class="learning-path">
-                <!-- Etapas completadas (past) -->
-                <div class="level past" data-stage="past-1"></div>
-                <div class="level past" data-stage="past-2"></div>
+        <div class="content">
+            <p class="overline">CAPÍTULO I</p>
+            <h1 class="title">LA INICIACIÓN</h1>
+            <p class="intro">Horacia se compromete a hacer las misiones que se le encomiendan</p>
+            
+            <div class="stages">
+                <div class="stage">
+                    <div class="stage-top-platform"></div>
+                    <div class="stage-bottom-platform"></div>
+                </div>
+                <div class="stage disabled">
+                    <div class="stage-top-platform"></div>
+                    <div class="stage-bottom-platform"></div>
+                </div>
+                <div class="stage disabled">
+                    <div class="stage-top-platform"></div>
+                    <div class="stage-bottom-platform"></div>
+                </div>
+                <div class="stage disabled">
+                    <div class="stage-top-platform"></div>
+                    <div class="stage-bottom-platform"></div>
+                </div>
+                <div class="stage disabled">
+                    <div class="stage-top-platform"></div>
+                    <div class="stage-bottom-platform"></div>
+                </div>
+                <div class="stage disabled">
+                    <div class="stage-top-platform"></div>
+                    <div class="stage-bottom-platform"></div>
+                </div>
+                <div class="stage disabled">
+                    <div class="stage-top-platform"></div>
+                    <div class="stage-bottom-platform"></div>
+                </div>
+                <div class="stage disabled">
+                    <div class="stage-top-platform"></div>
+                    <div class="stage-bottom-platform"></div>
+                </div>
+                <div class="stage disabled">
+                    <div class="stage-top-platform"></div>
+                    <div class="stage-bottom-platform"></div>
+                </div>
+                <div class="stage disabled">
+                    <div class="stage-top-platform"></div>
+                    <div class="stage-bottom-platform"></div>
+                </div>
+                <div class="stage disabled">
+                    <div class="stage-top-platform"></div>
+                    <div class="stage-bottom-platform"></div>
+                </div>
+                <div class="stage disabled">
+                    <div class="stage-top-platform"></div>
+                    <div class="stage-bottom-platform"></div>
+                </div>
+            </div>
+            
+            <div class="bubble-container">
+                <div class="bubble normal" style="display: none;">
+                    <div class="bubble-title">Title Normal</div>
+                    <div class="bubble-text">Text normal...</div>
+                    <a href="#" class="bubble-button">Button</a>
+                </div>
                 
-                <!-- Etapa actual (current) -->
-                <div class="level current" data-stage="current"></div>
-                
-                <!-- Etapas futuras (future) -->
-                <div class="level future" data-stage="future-1"></div>
-                <div class="level future" data-stage="future-2"></div>
-                <div class="level future" data-stage="future-3"></div>
-                <div class="level future" data-stage="future-4"></div>
-                <div class="level future" data-stage="future-5"></div>
-                <div class="level future" data-stage="future-6"></div>
+                <div class="bubble disabled" style="display: none;">
+                    <div class="bubble-title">Title Disabled</div>
+                    <div class="bubble-text">Text disabled...</div>
+                    <a href="#" class="bubble-button">Button</a>
+                </div>
+            </div>
+
+            <img src="img/oinc.png" alt="Oinc" class="oinc">
+            <img src="img/coin-hue.png" alt="Coin" class="coin">
+
+            <div class="credits">
+                <p>2024 Ordenar.me ® Todos los derechos reservados</p>
             </div>
         </div>
-
-        <!-- Modal para información -->
-        <div id="infoModal" class="modal">
-            <div class="modal-content" id="modalContent">
-                <span class="close">&times;</span>
-                <h2 id="modalTitle">Información</h2>
-                <div id="modalBody"></div>
-            </div>
+    </main>
+    <div class="drawer-modal" style="display: none;">
+        <div class="drawer-overlay"></div>
+        <div class="drawer-content">
+            <button class="drawer-close">&times;</button>
+            <iframe id='og_iframe_temp' 
+                    allow='camera *;' 
+                    scrolling='auto' 
+                    style='width: 100%; height: 100%; margin: 0; border: none;' 
+                    src='' 
+                    title='Personalidad Financiera'>
+            </iframe>
         </div>
-
-        <script src="script.js"></script>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -59,11 +59,6 @@ const Test = ({ onClose, onShowResult }) => {
     }
   };
 
-  const handleComplete = () => {
-    setIsComplete(true);
-    setShowLeadForm(true);
-  };
-
   const handleLeadSubmit = async (name) => {
     setShowLeadForm(false);
     setIsCalculating(true);
@@ -85,6 +80,7 @@ const Test = ({ onClose, onShowResult }) => {
   const handlePrevious = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
+      setIsComplete(false);
     }
   };
 
@@ -205,15 +201,6 @@ const Test = ({ onClose, onShowResult }) => {
         selectedAnswer={answers[currentQuestion]}
         onAnswer={handleAnswer}
       />
-
-      {isComplete && (
-        <button 
-          className="result-button"
-          onClick={handleComplete}
-        >
-          Continuar
-        </button>
-      )}
     </div>
   );
 };

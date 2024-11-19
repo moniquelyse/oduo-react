@@ -65,6 +65,7 @@ const Stage = ({
           <Bubble 
             {...bubbleContent}
             disabled={disabled}
+            isGlowing={isGlowing}
             onButtonClick={onBubbleButtonClick}
           />
         </div>

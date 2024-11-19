@@ -54,8 +54,6 @@ const Test = ({ onClose, onShowResult }) => {
     
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
-    } else {
-      setIsComplete(true);
     }
   };
 
@@ -90,6 +88,11 @@ const Test = ({ onClose, onShowResult }) => {
     }
   };
 
+  const handleFormPrevious = () => {
+    setShowLeadForm(false);
+    handlePrevious();
+  };
+
   if (showLeadForm) {
     return (
       <div className="test-container">
@@ -103,10 +106,7 @@ const Test = ({ onClose, onShowResult }) => {
         <LeadForm 
           onSubmit={handleLeadSubmit}
           score={answers.reduce((a, b) => a + b, 0)}
-          onPrevious={() => {
-            setShowLeadForm(false);
-            setCurrentQuestion(questions.length - 1);
-          }}
+          onPrevious={handleFormPrevious}
           name={formName}
           email={formEmail}
           onNameChange={setFormName}
@@ -187,13 +187,15 @@ const Test = ({ onClose, onShowResult }) => {
         >
           ← Anterior
         </button>
-        <button 
-          className="navigation-button"
-          onClick={handleNext}
-          disabled={!answers[currentQuestion]}
-        >
-          Siguiente →
-        </button>
+        {currentQuestion < questions.length - 1 && (
+          <button 
+            className="navigation-button"
+            onClick={handleNext}
+            disabled={!answers[currentQuestion]}
+          >
+            Siguiente →
+          </button>
+        )}
       </div>
       
       <Question 

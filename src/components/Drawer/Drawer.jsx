@@ -1,13 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import './Drawer.css';
 
 const Drawer = ({ isOpen, onClose, children }) => {
-  const [mounted, setMounted] = useState(false);
-
   useEffect(() => {
     if (isOpen) {
-      setMounted(true);
+      // Bloquear scroll
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Restaurar scroll
+      document.body.style.overflow = '';
     }
+
+    // Cleanup
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [isOpen]);
 
   const handleClose = () => {
@@ -16,11 +23,10 @@ const Drawer = ({ isOpen, onClose, children }) => {
     
     setTimeout(() => {
       onClose();
-      setMounted(false);
     }, 300);
   };
 
-  if (!isOpen && !mounted) return null;
+  if (!isOpen) return null;
 
   return (
     <div className="drawer">

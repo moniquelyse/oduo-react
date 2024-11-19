@@ -8,6 +8,7 @@ const Test = ({ onComplete }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState(new Array(questions.length).fill(0));
   const [showResult, setShowResult] = useState(false);
+  const [isComplete, setIsComplete] = useState(false);
 
   const handleAnswer = (points) => {
     const newAnswers = [...answers];
@@ -17,12 +18,14 @@ const Test = ({ onComplete }) => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      setTimeout(() => {
-        setShowResult(true);
-        if (onComplete) {
-          onComplete(newAnswers.reduce((a, b) => a + b, 0));
-        }
-      }, 500);
+      setIsComplete(true);
+    }
+  };
+
+  const handleShowResult = () => {
+    setShowResult(true);
+    if (onComplete) {
+      onComplete(answers.reduce((a, b) => a + b, 0));
     }
   };
 
@@ -51,6 +54,7 @@ const Test = ({ onComplete }) => {
             setCurrentQuestion(0);
             setAnswers(new Array(questions.length).fill(0));
             setShowResult(false);
+            setIsComplete(false);
           }}
         >
           Volver a empezar
@@ -68,12 +72,6 @@ const Test = ({ onComplete }) => {
         />
       </div>
       
-      <Question 
-        data={questions[currentQuestion]}
-        selectedAnswer={answers[currentQuestion]}
-        onAnswer={handleAnswer}
-      />
-
       <div className="navigation-buttons">
         <button 
           className="navigation-button"
@@ -82,14 +80,31 @@ const Test = ({ onComplete }) => {
         >
           ← Anterior
         </button>
-        <button 
-          className="navigation-button"
-          onClick={handleNext}
-          disabled={currentQuestion === questions.length - 1 || !answers[currentQuestion]}
-        >
-          Siguiente →
-        </button>
+        {!isComplete && (
+          <button 
+            className="navigation-button"
+            onClick={handleNext}
+            disabled={currentQuestion === questions.length - 1 || !answers[currentQuestion]}
+          >
+            Siguiente →
+          </button>
+        )}
       </div>
+      
+      <Question 
+        data={questions[currentQuestion]}
+        selectedAnswer={answers[currentQuestion]}
+        onAnswer={handleAnswer}
+      />
+
+      {isComplete && (
+        <button 
+          className="result-button"
+          onClick={handleShowResult}
+        >
+          Ver resultado
+        </button>
+      )}
     </div>
   );
 };

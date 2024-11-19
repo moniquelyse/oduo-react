@@ -5,7 +5,7 @@ const Question = ({ data, selectedAnswer, onAnswer }) => {
 
   return (
     <div className="question-container">
-      <h3 className="question-text">{question}</h3>
+      <h2 className="question-text">{question}</h2>
       
       <div className="answers-grid">
         {answers.map((answer, index) => (

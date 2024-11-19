@@ -18,13 +18,13 @@
 .drawer-stage-content h2 {
   font-size: 24px;
   margin-bottom: 8px;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .drawer-stage-content h3 {
   font-size: 18px;
   margin-bottom: 24px;
-  opacity: 0.7;
+  font-weight: 400;
 }
 
 .drawer-stage-content p {

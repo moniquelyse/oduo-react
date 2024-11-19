@@ -1,5 +1,6 @@
 // Constante para la key del localStorage
 const PROGRESS_KEY = 'ordenarme_current_stage';
+const TEST_RESULT_KEY = 'ordenarme_test_result';
 
 /**
  * Obtiene el stage actual desde localStorage
@@ -42,5 +43,25 @@ export const resetProgress = () => {
   } catch (e) {
     console.error('Error resetting progress:', e);
     return false;
+  }
+};
+
+export const saveTestResult = (score) => {
+  try {
+    localStorage.setItem(TEST_RESULT_KEY, score.toString());
+    return true;
+  } catch (e) {
+    console.error('Error saving test result:', e);
+    return false;
+  }
+};
+
+export const getTestResult = () => {
+  try {
+    const result = localStorage.getItem(TEST_RESULT_KEY);
+    return result ? parseInt(result) : null;
+  } catch (e) {
+    console.error('Error getting test result:', e);
+    return null;
   }
 }; 

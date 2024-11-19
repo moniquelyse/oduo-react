@@ -33,6 +33,7 @@ function App() {
 
   const handleDrawerClose = () => {
     setIsDrawerOpen(false);
+    setHideCloseButton(false);
     setCurrentStage(getCurrentStage());
   };
 

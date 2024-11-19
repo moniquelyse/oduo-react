@@ -19,6 +19,13 @@
   color: white;
 }
 
+/* .bubble {
+  z-index: 20;
+  width: 340px;
+  left: calc(50% - 170px);
+  max-width: 100%;
+} */
+
 .bubble-title {
   font-size: 1.25rem;
   font-weight: 500;
@@ -58,6 +65,8 @@
   background: rgb(140 86 225);
   transform: rotate(45deg) translate(-5.5px, 5.5px);
   left: 50%;
+  margin-left: var(--arrow-margin-left, 0);
+  margin-right: var(--arrow-margin-right, 0);
 }
 
 /* bubble disabled */
@@ -68,6 +77,8 @@
 .bubble.disabled:after {
   background: #424e6c;
 }
+
+
 
 .bubble.disabled .bubble-title,
 .bubble.disabled .bubble-text {

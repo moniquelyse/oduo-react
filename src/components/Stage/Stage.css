@@ -43,18 +43,6 @@
   transform: translate3d(0, 0, 0);
 }
 
-/* Aseguramos que el bubble esté por encima de los stages siguientes */
-.bubble-container {
-  z-index: 50;
-} 
-
-
-
-
-
-
-/*css de mi versión original*/
-
 .stages {
   position: relative;
   z-index: 1;
@@ -63,13 +51,6 @@
   align-items: center;
   gap: 32px;
   margin-top: 48px;
-}
-
-.stage {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
 }
 
 .stage-top-platform {
@@ -140,4 +121,38 @@
 .stage.active {
   position: relative;
   z-index: 30;
+}
+
+/* Mover a Stage.css */
+@keyframes float {
+  0% {
+    transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(0, 0, 10px);
+  }
+  100% {
+    transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes floatDisabled {
+  0% {
+    transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(0, 0, 5px);
+  }
+  100% {
+    transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes pressAnimation {
+  from {
+    transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(0, 0, 0);
+  }
+  to {
+    transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(25px, 25px, 0);
+  }
 }

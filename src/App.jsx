@@ -3,18 +3,15 @@ import Stage from './components/Stage/Stage';
 import { bubbleContent } from './data/bubbleContent';
 import './styles/global.css';
 import Drawer from './components/Drawer/Drawer';
+import { stages, currentStage } from './config/stages';
+import DrawerContent from './components/DrawerContent/DrawerContent';
 
 function App() {
   const [activeBubble, setActiveBubble] = useState(null);
-  const [pressedStage, setPressedStage] = useState(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [pressedStage, setPressedStage] = useState(null);
 
   const handleBubbleOpen = (stageIndex) => {
-    if (pressedStage !== null && pressedStage !== stageIndex) {
-      const stages = document.querySelectorAll('.stage');
-      stages[pressedStage]?.classList.add('release');
-    }
-    
     setActiveBubble(stageIndex);
     setPressedStage(stageIndex);
   };
@@ -24,9 +21,9 @@ function App() {
     setPressedStage(null);
   };
 
-  const handleBubbleButtonClick = () => {
-    setIsDrawerOpen(true);
+  const handleBubbleButtonClick = (stageIndex) => {
     handleBubbleClose();
+    setIsDrawerOpen(true);
   };
 
   const handleDrawerClose = () => {
@@ -46,86 +43,20 @@ function App() {
           <p className="intro">El aprendiz se compromete a hacer las misiones que se le encomiendan</p>
           
           <div className="stages stages-1">
-            <Stage 
-              isGlowing={true} 
-              bubbleContent={bubbleContent.stage1}
-              isActive={activeBubble === 0}
-              onBubbleOpen={() => handleBubbleOpen(0)}
-              onBubbleClose={handleBubbleClose}
-              onBubbleButtonClick={handleBubbleButtonClick}
-              isPressed={pressedStage === 0}
-              index={0}
-            />
-            <Stage 
-              disabled 
-              bubbleContent={bubbleContent.stage2}
-              isActive={activeBubble === 1}
-              onBubbleOpen={() => handleBubbleOpen(1)}
-              onBubbleClose={handleBubbleClose}
-              onBubbleButtonClick={handleBubbleButtonClick}
-              isPressed={pressedStage === 1}
-              index={1}
-            />
-            <Stage 
-              disabled 
-              bubbleContent={bubbleContent.stage3}
-              isActive={activeBubble === 2}
-              onBubbleOpen={() => handleBubbleOpen(2)}
-              onBubbleClose={handleBubbleClose}
-              onBubbleButtonClick={handleBubbleButtonClick}
-              isPressed={pressedStage === 2}
-              index={2}
-            />
-            <Stage 
-              disabled 
-              bubbleContent={bubbleContent.stage4}
-              isActive={activeBubble === 3}
-              onBubbleOpen={() => handleBubbleOpen(3)}
-              onBubbleClose={handleBubbleClose}
-              onBubbleButtonClick={handleBubbleButtonClick}
-              isPressed={pressedStage === 3}
-              index={3}
-            />
-            <Stage 
-              disabled 
-              bubbleContent={bubbleContent.stage5}
-              isActive={activeBubble === 4}
-              onBubbleOpen={() => handleBubbleOpen(4)}
-              onBubbleClose={handleBubbleClose}
-              onBubbleButtonClick={handleBubbleButtonClick}
-              isPressed={pressedStage === 4}
-              index={4}
-            />
-            <Stage 
-              disabled 
-              bubbleContent={bubbleContent.stage6}
-              isActive={activeBubble === 5}
-              onBubbleOpen={() => handleBubbleOpen(5)}
-              onBubbleClose={handleBubbleClose}
-              onBubbleButtonClick={handleBubbleButtonClick}
-              isPressed={pressedStage === 5}
-              index={5}
-            />
-            <Stage 
-              disabled 
-              bubbleContent={bubbleContent.stage7}
-              isActive={activeBubble === 6}
-              onBubbleOpen={() => handleBubbleOpen(6)}
-              onBubbleClose={handleBubbleClose}
-              onBubbleButtonClick={handleBubbleButtonClick}
-              isPressed={pressedStage === 6}
-              index={6}
-            />
-            <Stage 
-              disabled 
-              bubbleContent={bubbleContent.stage8}
-              isActive={activeBubble === 7}
-              onBubbleOpen={() => handleBubbleOpen(7)}
-              onBubbleClose={handleBubbleClose}
-              onBubbleButtonClick={handleBubbleButtonClick}
-              isPressed={pressedStage === 7}
-              index={7}
-            />
+            {stages.map((stage, index) => (
+              <Stage 
+                key={stage.id}
+                isGlowing={index === currentStage}
+                disabled={index > currentStage}
+                bubbleContent={bubbleContent[`stage${index + 1}`]}
+                isActive={activeBubble === index}
+                onBubbleOpen={() => handleBubbleOpen(index)}
+                onBubbleClose={handleBubbleClose}
+                onBubbleButtonClick={() => handleBubbleButtonClick(index)}
+                isPressed={pressedStage === index}
+                index={index}
+              />
+            ))}
           </div>
         </div>
 
@@ -158,10 +89,9 @@ function App() {
         <p>2024 Ordenar.me ® Todos los derechos reservados</p>
       </div>
 
-      <Drawer 
-        isOpen={isDrawerOpen} 
-        onClose={() => setIsDrawerOpen(false)} 
-      />
+      <Drawer isOpen={isDrawerOpen} onClose={handleDrawerClose}>
+        <DrawerContent stage={stages[activeBubble]} />
+      </Drawer>
     </main>
   );
 }

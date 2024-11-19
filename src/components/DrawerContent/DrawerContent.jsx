@@ -1,7 +1,12 @@
 import { useEffect } from 'react';
 import './DrawerContent.css';
+import Test from '../Test/Test';
 
 const DrawerContent = ({ stage }) => {
+  const handleTestComplete = (score) => {
+    console.log('Test completado con puntuación:', score);
+  };
+
   useEffect(() => {
     if (stage?.id === 0) {
       let og_embedURL = 'https://ordenarme.outgrow.us/63a4a9707a8478521053b9e1?custom=1';
@@ -22,19 +27,8 @@ const DrawerContent = ({ stage }) => {
 
   if (stage.id === 0) {
     return (
-      <div className="drawer-stage-content outgrow">
-        <iframe 
-          id="og_iframe_temp"
-          allow="camera *;"
-          scrolling="auto"
-          style={{
-            width: '100%',
-            height: '100%',
-            margin: 0,
-            border: 'none'
-          }}
-          title="Personalidad Financiera"
-        />
+      <div className="drawer-stage-content">
+        <Test onComplete={handleTestComplete} />
       </div>
     );
   }

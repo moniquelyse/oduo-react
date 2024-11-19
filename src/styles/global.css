@@ -37,7 +37,7 @@ button {
   opacity: 0.3;
   mix-blend-mode: soft-light;
   pointer-events: none;
-  background: url(img/noise.svg);
+  background: url(/img/noise.svg);
 }
 
 .logo-container {

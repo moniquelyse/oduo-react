@@ -10,6 +10,7 @@ function App() {
   const [activeBubble, setActiveBubble] = useState(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [pressedStage, setPressedStage] = useState(null);
+  const [activeDrawerStage, setActiveDrawerStage] = useState(null);
 
   const handleBubbleOpen = (stageIndex) => {
     setActiveBubble(stageIndex);
@@ -22,12 +23,14 @@ function App() {
   };
 
   const handleBubbleButtonClick = (stageIndex) => {
+    setActiveDrawerStage(stageIndex);
     handleBubbleClose();
     setIsDrawerOpen(true);
   };
 
   const handleDrawerClose = () => {
     setIsDrawerOpen(false);
+    setActiveDrawerStage(null);
   };
 
   return (
@@ -90,7 +93,7 @@ function App() {
       </div>
 
       <Drawer isOpen={isDrawerOpen} onClose={handleDrawerClose}>
-        <DrawerContent stage={stages[activeBubble]} />
+        <DrawerContent stage={stages[activeDrawerStage]} />
       </Drawer>
     </main>
   );

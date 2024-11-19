@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './Drawer.css';
 
-const Drawer = ({ isOpen, onClose }) => {
+const Drawer = ({ isOpen, onClose, children }) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const Drawer = ({ isOpen, onClose }) => {
         <span></span>
       </button>
       <div className="drawer-content">
-        Contenido del drawer
+        {children}
       </div>
     </div>
   );

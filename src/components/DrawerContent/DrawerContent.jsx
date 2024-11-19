@@ -2,7 +2,7 @@ const DrawerContent = ({ stage }) => {
   if (!stage) return null;
 
   return (
-    <div className="drawer-content">
+    <div className="drawer-stage-content">
       <h2>{stage.title}</h2>
       <h3>{stage.subtitle}</h3>
       

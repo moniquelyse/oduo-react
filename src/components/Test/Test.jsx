@@ -60,10 +60,18 @@ const Test = ({ onComplete }) => {
 
   if (showResult) {
     return (
-      <>
+      <div className="test-container">
         <Result score={answers.reduce((a, b) => a + b, 0)} />
         <button 
-          className="navigation-button restart"
+          className="result-button"
+          onClick={() => {
+            console.log('Finalizar test');
+          }}
+        >
+          Finalizar
+        </button>
+        <button 
+          className="result-button ghost"
           onClick={() => {
             setCurrentQuestion(0);
             setAnswers(new Array(questions.length).fill(0));
@@ -71,9 +79,9 @@ const Test = ({ onComplete }) => {
             setIsComplete(false);
           }}
         >
-          Volver a empezar
+          Repetir el test
         </button>
-      </>
+      </div>
     );
   }
 

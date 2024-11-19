@@ -57,6 +57,14 @@
   margin-top: 32px;
 }
 
+.result-button.ghost {
+  background: transparent;
+  box-shadow: none;
+  color: rgb(140 86 225);
+  border: 2px solid transparent;
+  margin-top: 16px;
+}
+
 .navigation-button.restart {
   display: block;
   margin: 24px auto 0;

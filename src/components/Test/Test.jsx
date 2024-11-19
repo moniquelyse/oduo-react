@@ -4,14 +4,17 @@ import Result from './Result';
 import { questions } from './testData';
 import './Test.css';
 import { advanceStage, saveTestResult, getTestResult, getCurrentStage } from '../../utils/progress';
+import LeadForm from '../LeadForm/LeadForm';
 
-const Test = ({ onComplete, onClose, onShowResult }) => {
+const Test = ({ onClose, onShowResult }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState(new Array(questions.length).fill(0));
   const [showResult, setShowResult] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
   const [isCalculating, setIsCalculating] = useState(false);
   const [isFirstCompletion, setIsFirstCompletion] = useState(true);
+  const [showLeadForm, setShowLeadForm] = useState(false);
+  const [userName, setUserName] = useState('');
 
   useEffect(() => {
     const savedResult = getTestResult();
@@ -52,15 +55,20 @@ const Test = ({ onComplete, onClose, onShowResult }) => {
   const handleShowResult = () => {
     setIsCalculating(true);
     setTimeout(() => {
-      const finalScore = answers.reduce((a, b) => a + b, 0);
       setIsCalculating(false);
-      setShowResult(true);
-      saveTestResult(finalScore);
-      
-      if (isFirstCompletion) {
-        advanceStage();
-      }
+      setShowLeadForm(true);
     }, 4000);
+  };
+
+  const handleLeadSubmit = (name) => {
+    setUserName(name);
+    setShowLeadForm(false);
+    setShowResult(true);
+    const finalScore = answers.reduce((a, b) => a + b, 0);
+    saveTestResult(finalScore);
+    if (isFirstCompletion) {
+      advanceStage();
+    }
   };
 
   const handlePrevious = () => {
@@ -77,6 +85,15 @@ const Test = ({ onComplete, onClose, onShowResult }) => {
 
   // Calculamos el progreso basado en respuestas completadas
   const progress = answers.filter(answer => answer !== 0).length;
+
+  if (showLeadForm) {
+    return (
+      <LeadForm 
+        onSubmit={handleLeadSubmit}
+        score={answers.reduce((a, b) => a + b, 0)}
+      />
+    );
+  }
 
   if (isCalculating) {
     return (
@@ -105,7 +122,8 @@ const Test = ({ onComplete, onClose, onShowResult }) => {
 
   if (showResult) {
     return (
-      <div className="test-container">
+      <div className="result-container">
+        <h2>{userName ? `${userName}, este es tu resultado:` : 'Tu resultado'}</h2>
         <Result score={answers.reduce((a, b) => a + b, 0)} />
         <button 
           className="result-button"

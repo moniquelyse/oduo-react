@@ -1,3 +1,5 @@
+import './DrawerContent.css';
+
 const DrawerContent = ({ stage }) => {
   if (!stage) return null;
 

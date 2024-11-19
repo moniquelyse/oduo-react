@@ -1,0 +1,40 @@
+.drawer-stage-content {
+  padding: 24px;
+  color: white;
+  height: 100%;
+}
+
+.drawer-stage-content h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.drawer-stage-content h3 {
+  font-size: 18px;
+  margin-bottom: 24px;
+  opacity: 0.7;
+}
+
+.drawer-stage-content p {
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.drawer-stage-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.drawer-stage-content li {
+  margin-bottom: 12px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.drawer-stage-content li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: rgb(140 86 225);
+} 

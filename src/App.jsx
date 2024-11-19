@@ -5,6 +5,7 @@ import './styles/global.css';
 import Drawer from './components/Drawer/Drawer';
 import { stages, currentStage } from './config/stages';
 import DrawerContent from './components/DrawerContent/DrawerContent';
+import { getCurrentStage } from './utils/progress';
 
 function App() {
   const [activeBubble, setActiveBubble] = useState(null);
@@ -12,6 +13,7 @@ function App() {
   const [pressedStage, setPressedStage] = useState(null);
   const [activeDrawerStage, setActiveDrawerStage] = useState(0);
   const [hideCloseButton, setHideCloseButton] = useState(false);
+  const [currentStage, setCurrentStage] = useState(() => getCurrentStage());
 
   const handleBubbleOpen = (stageIndex) => {
     setActiveBubble(stageIndex);
@@ -31,6 +33,7 @@ function App() {
 
   const handleDrawerClose = () => {
     setIsDrawerOpen(false);
+    setCurrentStage(getCurrentStage());
   };
 
   return (

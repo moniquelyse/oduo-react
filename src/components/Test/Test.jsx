@@ -3,6 +3,7 @@ import Question from './Question';
 import Result from './Result';
 import { questions } from './testData';
 import './Test.css';
+import { advanceStage } from '../../utils/progress';
 
 const Test = ({ onComplete, onClose, onShowResult }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -34,6 +35,7 @@ const Test = ({ onComplete, onClose, onShowResult }) => {
     setTimeout(() => {
       setIsCalculating(false);
       setShowResult(true);
+      advanceStage();
       if (onComplete) {
         onComplete(answers.reduce((a, b) => a + b, 0));
       }

@@ -13,15 +13,30 @@ const Test = ({ onClose, onShowResult }) => {
   const [isComplete, setIsComplete] = useState(false);
   const [isCalculating, setIsCalculating] = useState(false);
   const [showLeadForm, setShowLeadForm] = useState(false);
-  const [userName, setUserName] = useState('');
-  const [isFirstCompletion, setIsFirstCompletion] = useState(true);
-  
-  // Nuevos estados para el formulario
   const [formName, setFormName] = useState('');
   const [formEmail, setFormEmail] = useState('');
-
+  const [savedScore, setSavedScore] = useState(null);
+  const [isFirstCompletion, setIsFirstCompletion] = useState(true);
   const totalSteps = 8;
-  
+
+  // Verificar resultado guardado y first completion al montar
+  useEffect(() => {
+    const savedResult = getTestResult();
+    if (savedResult !== null) {
+      setSavedScore(savedResult);
+      setShowResult(true);
+      setIsFirstCompletion(false);
+    }
+  }, []);
+
+  // Verificar first completion por separado
+  useEffect(() => {
+    const currentStage = getCurrentStage();
+    if (currentStage > 1) {
+      setIsFirstCompletion(false);
+    }
+  }, []);
+
   const calculateProgress = () => {
     if (showLeadForm) {
       return 7 + ((formName.length > 0 || formEmail.length > 0) ? 1 : 0);
@@ -58,7 +73,6 @@ const Test = ({ onClose, onShowResult }) => {
   const handleLeadSubmit = async (name) => {
     setShowLeadForm(false);
     setIsCalculating(true);
-    setUserName(name);
 
     const finalScore = answers.reduce((a, b) => a + b, 0);
     
@@ -66,9 +80,11 @@ const Test = ({ onClose, onShowResult }) => {
       setIsCalculating(false);
       setShowResult(true);
       saveTestResult(finalScore);
+      setSavedScore(finalScore);
       
       if (isFirstCompletion) {
         advanceStage();
+        setIsFirstCompletion(false);
       }
     }, 4000);
   };
@@ -148,8 +164,8 @@ const Test = ({ onClose, onShowResult }) => {
     return (
       <div className="test-container">
         <Result 
-          score={answers.reduce((a, b) => a + b, 0)} 
-          userName={userName}
+          score={savedScore || answers.reduce((a, b) => a + b, 0)} 
+          userName={formName}
         />
         <button 
           className="result-button"
@@ -165,6 +181,9 @@ const Test = ({ onClose, onShowResult }) => {
             setShowResult(false);
             setIsComplete(false);
             setShowLeadForm(false);
+            setFormName('');
+            setFormEmail('');
+            setSavedScore(null);
           }}
         >
           Repetir el test

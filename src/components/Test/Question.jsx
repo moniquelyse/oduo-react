@@ -1,11 +1,14 @@
 import './Question.css';
 
 const Question = ({ data, selectedAnswer, onAnswer }) => {
-  const { question, answers } = data;
+  const { question, description, answers } = data;
 
   return (
     <div className="question-container">
       <h2 className="question-text">{question}</h2>
+      {description && (
+        <p className="question-description">{description}</p>
+      )}
       
       <div className="answers-grid">
         {answers.map((answer, index) => (

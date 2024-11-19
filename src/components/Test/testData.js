@@ -1,6 +1,7 @@
 export const questions = [
   {
-    question: "¿Cómo es tu conocimiento y experiencia financiera? Ej: Tu capacidad de manejar tus ingresos, gastos, presupuestos, ahorros, inversiones, etc.",
+    question: "¿Cómo es tu conocimiento y experiencia financiera?",
+    description: "Tu capacidad de manejar tus ingresos, gastos, presupuestos, ahorros, inversiones, etc.",
     answers: [
       { text: "Muy bajo o nulo conocimiento en esta materia", points: 1 },
       { text: "Un poco de conocimientos y experiencia con instrumentos de deuda (créditos, tarjetas, etc.)", points: 2 },

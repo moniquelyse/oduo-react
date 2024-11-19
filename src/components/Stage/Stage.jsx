@@ -13,12 +13,29 @@ const Stage = ({
   index 
 }) => {
   const [isReleasing, setIsReleasing] = useState(false);
+  const [isPlatformPressed, setIsPlatformPressed] = useState(false);
 
   const handleClick = () => {
     if (isPressed) {
       setIsReleasing(true);
+      setIsPlatformPressed(false);
       onBubbleClose();
     } else {
+      const stage = document.querySelectorAll('.stage')[index];
+      const computedStyle = window.getComputedStyle(stage);
+      const marginLeft = computedStyle.marginLeft;
+      const marginRight = computedStyle.marginRight;
+      
+      let arrowMargin = 0;
+      if (marginLeft !== '0px') {
+        arrowMargin = parseInt(marginLeft) / 2;
+      } else if (marginRight !== '0px') {
+        arrowMargin = -parseInt(marginRight) / 2;
+      }
+      
+      document.documentElement.style.setProperty('--arrow-margin-left', `${arrowMargin}px`);
+      
+      setIsPlatformPressed(true);
       onBubbleOpen();
     }
   };

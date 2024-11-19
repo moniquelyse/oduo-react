@@ -37,7 +37,7 @@ const Test = ({ onComplete, onClose, onShowResult }) => {
       if (onComplete) {
         onComplete(answers.reduce((a, b) => a + b, 0));
       }
-    }, 2000); // 2 segundos de "cálculo"
+    }, 4000); // Aumentado a 4 segundos para ver un ciclo completo
   };
 
   const handlePrevious = () => {
@@ -60,7 +60,16 @@ const Test = ({ onComplete, onClose, onShowResult }) => {
       <div className="calculating-container">
         <div className="calculating-content">
           <div className="calculating-animation">
-            <div className="coin-animation"></div>
+            <div className="math-symbols">
+              <span>ƒ</span>
+              <span>∀</span>
+              <span>∅</span>
+              <span>∈</span>
+              <span>∑</span>
+              <span>∐</span>
+              <span>∢</span>
+              <span>∝</span>
+            </div>
           </div>
           <div className="calculating-text-container">
             <p className="calculating-text">Analizando tus respuestas...</p>

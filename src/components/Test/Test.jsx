@@ -4,7 +4,7 @@ import Result from './Result';
 import { questions } from './testData';
 import './Test.css';
 
-const Test = ({ onComplete }) => {
+const Test = ({ onComplete, onClose }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState(new Array(questions.length).fill(0));
   const [showResult, setShowResult] = useState(false);
@@ -52,8 +52,15 @@ const Test = ({ onComplete }) => {
   if (isCalculating) {
     return (
       <div className="calculating-container">
-        <div className="calculating-animation"></div>
-        <p className="calculating-text">Calculando tu personalidad financiera...</p>
+        <div className="calculating-content">
+          <div className="calculating-animation">
+            <div className="coin-animation"></div>
+          </div>
+          <div className="calculating-text-container">
+            <p className="calculating-text">Analizando tus respuestas...</p>
+            <p className="calculating-subtext">Descubriendo tu personalidad financiera</p>
+          </div>
+        </div>
       </div>
     );
   }
@@ -64,9 +71,7 @@ const Test = ({ onComplete }) => {
         <Result score={answers.reduce((a, b) => a + b, 0)} />
         <button 
           className="result-button"
-          onClick={() => {
-            console.log('Finalizar test');
-          }}
+          onClick={onClose}
         >
           Finalizar
         </button>

@@ -93,7 +93,7 @@ function App() {
       </div>
 
       <Drawer isOpen={isDrawerOpen} onClose={handleDrawerClose}>
-        <DrawerContent stage={stages[activeDrawerStage]} />
+        <DrawerContent stage={stages[activeDrawerStage]} onClose={handleDrawerClose} />
       </Drawer>
     </main>
   );

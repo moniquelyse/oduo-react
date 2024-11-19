@@ -102,4 +102,4 @@ export const stages = [
   }
 ];
 
-export const currentStage = 1; // Para pruebas
+export const currentStage = 3; // Para pruebas

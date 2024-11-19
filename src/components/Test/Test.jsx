@@ -24,11 +24,9 @@ const Test = ({ onClose, onShowResult }) => {
   
   const calculateProgress = () => {
     if (showLeadForm) {
-      const formProgress = 7;
-      const hasInput = formName.length > 0 || formEmail.length > 0;
-      return formProgress + (hasInput ? 1 : 0);
+      return 7 + ((formName.length > 0 || formEmail.length > 0) ? 1 : 0);
     } else {
-      return answers.slice(0, currentQuestion + 1).filter(Boolean).length;
+      return currentQuestion;
     }
   };
 
@@ -77,7 +75,7 @@ const Test = ({ onClose, onShowResult }) => {
 
   const handlePrevious = () => {
     if (currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1);
+      setCurrentQuestion(prev => prev - 1);
       setIsComplete(false);
     }
   };
@@ -90,7 +88,9 @@ const Test = ({ onClose, onShowResult }) => {
 
   const handleFormPrevious = () => {
     setShowLeadForm(false);
-    handlePrevious();
+    setCurrentQuestion(questions.length - 1);
+    setFormName('');
+    setFormEmail('');
   };
 
   if (showLeadForm) {
@@ -99,7 +99,10 @@ const Test = ({ onClose, onShowResult }) => {
         <div className="progress-bar">
           <div 
             className="progress-fill"
-            style={{ width: `${(progress / totalSteps) * 100}%` }}
+            style={{ 
+              width: `${(progress / totalSteps) * 100}%`,
+              transition: 'width 0.3s ease-out'
+            }}
           />
         </div>
         
@@ -175,7 +178,10 @@ const Test = ({ onClose, onShowResult }) => {
       <div className="progress-bar">
         <div 
           className="progress-fill"
-          style={{ width: `${(progress / totalSteps) * 100}%` }}
+          style={{ 
+            width: `${(progress / totalSteps) * 100}%`,
+            transition: 'width 0.3s ease-out'
+          }}
         />
       </div>
       

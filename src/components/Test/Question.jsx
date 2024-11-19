@@ -1,6 +1,6 @@
 import './Question.css';
 
-const Question = ({ data, onAnswer }) => {
+const Question = ({ data, selectedAnswer, onAnswer }) => {
   const { question, answers } = data;
 
   return (
@@ -11,7 +11,7 @@ const Question = ({ data, onAnswer }) => {
         {answers.map((answer, index) => (
           <button
             key={index}
-            className="answer-button"
+            className={`answer-button ${selectedAnswer === answer.points ? 'selected' : ''}`}
             onClick={() => onAnswer(answer.points)}
           >
             {answer.text}

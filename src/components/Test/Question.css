@@ -28,4 +28,17 @@
 
 .answer-button:hover {
   background: rgb(120 66 205);
+}
+
+.answer-button.selected {
+  background: rgb(120 66 205);
+  position: relative;
+}
+
+.answer-button.selected::after {
+  content: '✓';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
 } 

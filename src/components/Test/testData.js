@@ -79,6 +79,6 @@ export const personalityTypes = {
   },
   D: {
     title: "Inocenci@ Scappatoria",
-    description: "Podríamos decir que quieres vivir en paz, en armonía y no tener que atender temas tan \"mundanos\" como el dinero. Por lo mismo, no queremos cambiarte, queremos potenciarte más allá del típico \"pero sólo hazlo y ya\". Tus finanzas en simple para acercarte al mundo financiero con un enfoque holístico."
+    description: "Podríamos decir que quieres vivir en paz, en armonía y no tener que atender temas tan \"mundanos\" como el dinero. Por lo mismo, no queremos cambiarte, queremos potenciarte más allá del típico \"pero sólo hazlo y ya\"."
   }
 }; 

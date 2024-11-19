@@ -12,33 +12,40 @@ const Test = ({ onClose, onShowResult }) => {
   const [showResult, setShowResult] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
   const [isCalculating, setIsCalculating] = useState(false);
-  const [isFirstCompletion, setIsFirstCompletion] = useState(true);
   const [showLeadForm, setShowLeadForm] = useState(false);
   const [userName, setUserName] = useState('');
+  const [isFirstCompletion, setIsFirstCompletion] = useState(true);
+  
+  // Nuevos estados para el formulario
+  const [formName, setFormName] = useState('');
+  const [formEmail, setFormEmail] = useState('');
+
+  const totalSteps = 8;
+  
+  const calculateProgress = () => {
+    if (showLeadForm) {
+      const formProgress = 7;
+      const hasInput = formName.length > 0 || formEmail.length > 0;
+      return formProgress + (hasInput ? 1 : 0);
+    } else {
+      return answers.slice(0, currentQuestion + 1).filter(Boolean).length;
+    }
+  };
+
+  const progress = calculateProgress();
 
   useEffect(() => {
     const savedResult = getTestResult();
     if (savedResult !== null) {
-      setShowResult(true);
       setIsFirstCompletion(false);
-      setAnswers(prev => {
-        const total = savedResult;
-        const answersCount = prev.length;
-        const baseValue = Math.floor(total / answersCount);
-        const remainder = total % answersCount;
-        
-        return prev.map((_, index) => 
-          index < remainder ? baseValue + 1 : baseValue
-        );
-      });
     }
   }, []);
 
   useEffect(() => {
-    if (onShowResult) {
-      onShowResult(showResult);
+    if (currentQuestion === questions.length - 1 && answers[currentQuestion]) {
+      setShowLeadForm(true);
     }
-  }, [showResult, onShowResult]);
+  }, [currentQuestion, answers]);
 
   const handleAnswer = (points) => {
     const newAnswers = [...answers];
@@ -52,23 +59,27 @@ const Test = ({ onClose, onShowResult }) => {
     }
   };
 
-  const handleShowResult = () => {
-    setIsCalculating(true);
-    setTimeout(() => {
-      setIsCalculating(false);
-      setShowLeadForm(true);
-    }, 4000);
+  const handleComplete = () => {
+    setIsComplete(true);
+    setShowLeadForm(true);
   };
 
-  const handleLeadSubmit = (name) => {
-    setUserName(name);
+  const handleLeadSubmit = async (name) => {
     setShowLeadForm(false);
-    setShowResult(true);
+    setIsCalculating(true);
+    setUserName(name);
+
     const finalScore = answers.reduce((a, b) => a + b, 0);
-    saveTestResult(finalScore);
-    if (isFirstCompletion) {
-      advanceStage();
-    }
+    
+    setTimeout(() => {
+      setIsCalculating(false);
+      setShowResult(true);
+      saveTestResult(finalScore);
+      
+      if (isFirstCompletion) {
+        advanceStage();
+      }
+    }, 4000);
   };
 
   const handlePrevious = () => {
@@ -83,15 +94,29 @@ const Test = ({ onClose, onShowResult }) => {
     }
   };
 
-  // Calculamos el progreso basado en respuestas completadas
-  const progress = answers.filter(answer => answer !== 0).length;
-
   if (showLeadForm) {
     return (
-      <LeadForm 
-        onSubmit={handleLeadSubmit}
-        score={answers.reduce((a, b) => a + b, 0)}
-      />
+      <div className="test-container">
+        <div className="progress-bar">
+          <div 
+            className="progress-fill"
+            style={{ width: `${(progress / totalSteps) * 100}%` }}
+          />
+        </div>
+        
+        <LeadForm 
+          onSubmit={handleLeadSubmit}
+          score={answers.reduce((a, b) => a + b, 0)}
+          onPrevious={() => {
+            setShowLeadForm(false);
+            setCurrentQuestion(questions.length - 1);
+          }}
+          name={formName}
+          email={formEmail}
+          onNameChange={setFormName}
+          onEmailChange={setFormEmail}
+        />
+      </div>
     );
   }
 
@@ -122,9 +147,11 @@ const Test = ({ onClose, onShowResult }) => {
 
   if (showResult) {
     return (
-      <div className="result-container">
-        <h2>{userName ? `${userName}, este es tu resultado:` : 'Tu resultado'}</h2>
-        <Result score={answers.reduce((a, b) => a + b, 0)} />
+      <div className="test-container">
+        <Result 
+          score={answers.reduce((a, b) => a + b, 0)} 
+          userName={userName}
+        />
         <button 
           className="result-button"
           onClick={onClose}
@@ -138,6 +165,7 @@ const Test = ({ onClose, onShowResult }) => {
             setAnswers(new Array(questions.length).fill(0));
             setShowResult(false);
             setIsComplete(false);
+            setShowLeadForm(false);
           }}
         >
           Repetir el test
@@ -151,7 +179,7 @@ const Test = ({ onClose, onShowResult }) => {
       <div className="progress-bar">
         <div 
           className="progress-fill"
-          style={{ width: `${(progress / questions.length) * 100}%` }}
+          style={{ width: `${(progress / totalSteps) * 100}%` }}
         />
       </div>
       
@@ -163,15 +191,13 @@ const Test = ({ onClose, onShowResult }) => {
         >
           ← Anterior
         </button>
-        {!isComplete && (
-          <button 
-            className="navigation-button"
-            onClick={handleNext}
-            disabled={currentQuestion === questions.length - 1 || !answers[currentQuestion]}
-          >
-            Siguiente →
-          </button>
-        )}
+        <button 
+          className="navigation-button"
+          onClick={handleNext}
+          disabled={!answers[currentQuestion]}
+        >
+          Siguiente →
+        </button>
       </div>
       
       <Question 
@@ -183,9 +209,9 @@ const Test = ({ onClose, onShowResult }) => {
       {isComplete && (
         <button 
           className="result-button"
-          onClick={handleShowResult}
+          onClick={handleComplete}
         >
-          Ver resultado
+          Continuar
         </button>
       )}
     </div>

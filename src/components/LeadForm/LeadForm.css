@@ -26,4 +26,71 @@
 
 .lead-form input::placeholder {
   color: rgba(255, 255, 255, 0.5);
+}
+
+.lead-form button.submitting {
+  cursor: not-allowed;
+  position: relative;
+  overflow: hidden;
+}
+
+.lead-form button.submitting .button-text {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.lead-form input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Opcional: Deshabilitar el hover effect cuando está enviando */
+.lead-form button.submitting:hover {
+  transform: none;
+  background: rgb(140, 86, 225);
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 24px 0;
+  text-align: left;
+}
+
+.form-fields input {
+  padding: 12px;
+  border: 2px solid rgba(140, 86, 225, 0.3);
+  border-radius: 4px;
+  font-size: 1rem;
+  background: transparent;
+  color: #fff;
+  width: 100%;
+}
+
+.form-fields input:focus {
+  border-color: rgb(140, 86, 225);
+  outline: none;
+}
+
+.form-fields input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-fields input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.question-title,
+.question-description {
+  text-align: left;
 } 

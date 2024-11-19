@@ -17,10 +17,12 @@ const Test = ({ onComplete }) => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      setShowResult(true);
-      if (onComplete) {
-        onComplete(newAnswers.reduce((a, b) => a + b, 0));
-      }
+      setTimeout(() => {
+        setShowResult(true);
+        if (onComplete) {
+          onComplete(newAnswers.reduce((a, b) => a + b, 0));
+        }
+      }, 500);
     }
   };
 
@@ -35,6 +37,9 @@ const Test = ({ onComplete }) => {
       setCurrentQuestion(currentQuestion + 1);
     }
   };
+
+  // Calculamos el progreso basado en respuestas completadas
+  const progress = answers.filter(answer => answer !== 0).length;
 
   if (showResult) {
     return (
@@ -56,8 +61,11 @@ const Test = ({ onComplete }) => {
 
   return (
     <div className="test-container">
-      <div className="test-progress">
-        Pregunta {currentQuestion + 1} de {questions.length}
+      <div className="progress-bar">
+        <div 
+          className="progress-fill"
+          style={{ width: `${(progress / questions.length) * 100}%` }}
+        />
       </div>
       
       <Question 

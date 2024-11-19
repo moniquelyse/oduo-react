@@ -11,6 +11,10 @@
   left: calc(50% - 215px);
 }
 
+.drawer-content {
+  height: 100%;
+}
+
 .drawer.closing {
   animation: slideOut 0.3s ease-in-out;
 }
@@ -35,29 +39,32 @@
 
 .drawer-close {
   position: absolute;
-  top: 24px;
-  right: 24px;
-  width: 32px;
-  height: 32px;
-  background: none;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background: rgba(0,0,0,.5);
   border: none;
   cursor: pointer;
   padding: 0;
+  border-radius: 0 0 0 3px;
 }
 
 .drawer-close span {
   position: absolute;
   top: 50%;
-  left: 0;
-  width: 100%;
-  height: 1px;
+  left: 50%;
+  width: 24px;
+  height: 3px;
   background: white;
+  border-radius: 3px;
+  transform-origin: center;
 }
 
 .drawer-close span:first-child {
-  transform: rotate(45deg);
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .drawer-close span:last-child {
-  transform: rotate(-45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
 } 

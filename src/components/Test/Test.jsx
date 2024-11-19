@@ -9,6 +9,7 @@ const Test = ({ onComplete }) => {
   const [answers, setAnswers] = useState(new Array(questions.length).fill(0));
   const [showResult, setShowResult] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
+  const [isCalculating, setIsCalculating] = useState(false);
 
   const handleAnswer = (points) => {
     const newAnswers = [...answers];
@@ -23,10 +24,14 @@ const Test = ({ onComplete }) => {
   };
 
   const handleShowResult = () => {
-    setShowResult(true);
-    if (onComplete) {
-      onComplete(answers.reduce((a, b) => a + b, 0));
-    }
+    setIsCalculating(true);
+    setTimeout(() => {
+      setIsCalculating(false);
+      setShowResult(true);
+      if (onComplete) {
+        onComplete(answers.reduce((a, b) => a + b, 0));
+      }
+    }, 2000); // 2 segundos de "cálculo"
   };
 
   const handlePrevious = () => {
@@ -43,6 +48,15 @@ const Test = ({ onComplete }) => {
 
   // Calculamos el progreso basado en respuestas completadas
   const progress = answers.filter(answer => answer !== 0).length;
+
+  if (isCalculating) {
+    return (
+      <div className="calculating-container">
+        <div className="calculating-animation"></div>
+        <p className="calculating-text">Calculando tu personalidad financiera...</p>
+      </div>
+    );
+  }
 
   if (showResult) {
     return (

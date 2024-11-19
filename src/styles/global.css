@@ -102,21 +102,6 @@ button {
   flex-direction: column;
 }
 
-/* centered 1,5,9,13… */
-.stage:nth-child(4n+1) { margin: 0; }
-
-/* 50L pares cada 2 partiendo del 2; 2,4,10,12… */
-.stage:nth-child(8n+2), .stage:nth-child(8n+4) { margin-left: -50px; }
-
-/* 75 L 8 en 8 partiendo del 3 */
-.stage:nth-child(8n+3) { margin-left: -75px; }
-
-/* 50R pares cada 2 partiendo del 6; 6,8,14,16… */
-.stage:nth-child(8n+6), .stage:nth-child(8n+8) { margin-right: -50px; }
-
-/* 75 R 8 en 8 partiendo del 7 */
-.stage:nth-child(8n+7) { margin-right: -75px; }
-
 .stage-top-platform {
   width: 64px;
   height: 64px;

@@ -1,19 +1,22 @@
 import { useState } from 'react';
 import Bubble from '../Bubble/Bubble';
+import Drawer from '../Drawer/Drawer';
 import './Stage.css';
 
 const Stage = ({ 
   disabled, 
   isGlowing, 
-  bubbleContent,
-  isActive,
-  onBubbleOpen,
-  onBubbleClose,
-  isPressed,
+  bubbleContent, 
+  isActive, 
+  onBubbleOpen, 
+  onBubbleClose, 
+  onBubbleButtonClick,
+  isPressed, 
   index 
 }) => {
   const [isReleasing, setIsReleasing] = useState(false);
   const [isPlatformPressed, setIsPlatformPressed] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const handleClick = () => {
     if (isPressed) {
@@ -41,7 +44,9 @@ const Stage = ({
   };
 
   const handleBubbleButtonClick = () => {
+    setIsDrawerOpen(true);
     setIsReleasing(true);
+    setIsPlatformPressed(false);
     onBubbleClose();
   };
 
@@ -60,7 +65,7 @@ const Stage = ({
           <Bubble 
             {...bubbleContent}
             disabled={disabled}
-            onButtonClick={handleBubbleButtonClick}
+            onButtonClick={onBubbleButtonClick}
           />
         </div>
       )}

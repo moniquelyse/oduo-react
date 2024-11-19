@@ -2,10 +2,12 @@ import { useState } from 'react';
 import Stage from './components/Stage/Stage';
 import { bubbleContent } from './data/bubbleContent';
 import './styles/global.css';
+import Drawer from './components/Drawer/Drawer';
 
 function App() {
   const [activeBubble, setActiveBubble] = useState(null);
   const [pressedStage, setPressedStage] = useState(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const handleBubbleOpen = (stageIndex) => {
     if (pressedStage !== null && pressedStage !== stageIndex) {
@@ -20,6 +22,15 @@ function App() {
   const handleBubbleClose = () => {
     setActiveBubble(null);
     setPressedStage(null);
+  };
+
+  const handleBubbleButtonClick = () => {
+    setIsDrawerOpen(true);
+    handleBubbleClose();
+  };
+
+  const handleDrawerClose = () => {
+    setIsDrawerOpen(false);
   };
 
   return (
@@ -41,6 +52,7 @@ function App() {
               isActive={activeBubble === 0}
               onBubbleOpen={() => handleBubbleOpen(0)}
               onBubbleClose={handleBubbleClose}
+              onBubbleButtonClick={handleBubbleButtonClick}
               isPressed={pressedStage === 0}
               index={0}
             />
@@ -50,6 +62,7 @@ function App() {
               isActive={activeBubble === 1}
               onBubbleOpen={() => handleBubbleOpen(1)}
               onBubbleClose={handleBubbleClose}
+              onBubbleButtonClick={handleBubbleButtonClick}
               isPressed={pressedStage === 1}
               index={1}
             />
@@ -59,6 +72,7 @@ function App() {
               isActive={activeBubble === 2}
               onBubbleOpen={() => handleBubbleOpen(2)}
               onBubbleClose={handleBubbleClose}
+              onBubbleButtonClick={handleBubbleButtonClick}
               isPressed={pressedStage === 2}
               index={2}
             />
@@ -68,6 +82,7 @@ function App() {
               isActive={activeBubble === 3}
               onBubbleOpen={() => handleBubbleOpen(3)}
               onBubbleClose={handleBubbleClose}
+              onBubbleButtonClick={handleBubbleButtonClick}
               isPressed={pressedStage === 3}
               index={3}
             />
@@ -77,6 +92,7 @@ function App() {
               isActive={activeBubble === 4}
               onBubbleOpen={() => handleBubbleOpen(4)}
               onBubbleClose={handleBubbleClose}
+              onBubbleButtonClick={handleBubbleButtonClick}
               isPressed={pressedStage === 4}
               index={4}
             />
@@ -86,6 +102,7 @@ function App() {
               isActive={activeBubble === 5}
               onBubbleOpen={() => handleBubbleOpen(5)}
               onBubbleClose={handleBubbleClose}
+              onBubbleButtonClick={handleBubbleButtonClick}
               isPressed={pressedStage === 5}
               index={5}
             />
@@ -95,6 +112,7 @@ function App() {
               isActive={activeBubble === 6}
               onBubbleOpen={() => handleBubbleOpen(6)}
               onBubbleClose={handleBubbleClose}
+              onBubbleButtonClick={handleBubbleButtonClick}
               isPressed={pressedStage === 6}
               index={6}
             />
@@ -104,6 +122,7 @@ function App() {
               isActive={activeBubble === 7}
               onBubbleOpen={() => handleBubbleOpen(7)}
               onBubbleClose={handleBubbleClose}
+              onBubbleButtonClick={handleBubbleButtonClick}
               isPressed={pressedStage === 7}
               index={7}
             />
@@ -138,6 +157,11 @@ function App() {
       <div className="credits">
         <p>2024 Ordenar.me ® Todos los derechos reservados</p>
       </div>
+
+      <Drawer 
+        isOpen={isDrawerOpen} 
+        onClose={() => setIsDrawerOpen(false)} 
+      />
     </main>
   );
 }

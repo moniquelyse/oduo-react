@@ -85,74 +85,6 @@ button {
   background: linear-gradient(00deg, black, transparent);
 }
 
-.stages {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-  margin-top: 48px;
-}
-
-.stage {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.stage-top-platform {
-  width: 64px;
-  height: 64px;
-  background: rgb(140 86 225);
-  border-radius: 8px;
-  transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg) translate3d(0, 0, 0);
-  z-index: 1;
-}
-
-/* Plataforma normal (no disabled) */
-.stage:not(.disabled) .stage-top-platform {
-  animation: float 3s ease-in-out infinite;
-}
-x
-/* Estado presionado para TODAS las plataformas */
-.stage-top-platform.pressed {
-  animation: pressAnimation 0.3s ease-out forwards !important;
-}
-
-/* Estado disabled (solo cambia el color y la animación de flotación) */
-.stage.disabled .stage-top-platform {
-  background: rgb(66 78 108);
-}
-
-.stage.disabled .stage-top-platform:not(.pressed) {
-  animation: floatDisabled 3s ease-in-out infinite;
-}
-
-.stage-bottom-platform {
-  width: 64px;
-  height: 64px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  transform: rotateX(55deg) rotate3d(0, 0, 1, 45deg);
-  margin-top: -44px;
-}
-
-.glowing-stage {
-  -webkit-animation: glowing 1s ease-in-out infinite alternate;
-  -moz-animation: glowing 1s ease-in-out infinite alternate;
-  animation: glowing 1s ease-in-out infinite alternate;
-}
-@keyframes glowing {
-  from {
-    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #f0f, 0 0 40px #0ff, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
-  }
-  to {
-    box-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
-  }
-}
-
 .chapter:not(:first-child) {
   margin-top: 52px;
 }
@@ -268,30 +200,7 @@ x
   left: calc(50% - 170px);
   max-width: 100%;
 }
-.bubble-title {
-  font-size: 1.25rem;
-  font-weight: 500;
-  margin-bottom: 8px;
-}
-.bubble-text {
-  font-size: 1rem;
-  line-height: 1.5;
-  margin-bottom: 16px;
-}
-.bubble-button {
-  background: #fff;
-  color: rgb(140 86 225);
-  padding: 8px 16px;
-  border-radius: 4px;
-  box-shadow: 0px 4px 0px rgb(255 255 255 / 40%);
-  text-align: center;
-  text-decoration: none;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  display: block;
-  width: 100%;
-}
+
 /* bubble top arrow */
 .bubble:after {
   content: '';
@@ -333,11 +242,6 @@ x
   background: transparent;
   z-index: 20;
   display: none;
-}
-
-.stage.active {
-  position: relative;
-  z-index: 30;
 }
 
 .drawer-modal {

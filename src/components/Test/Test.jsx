@@ -3,7 +3,7 @@ import Question from './Question';
 import Result from './Result';
 import { questions } from './testData';
 import './Test.css';
-import { advanceStage, saveTestResult, getTestResult } from '../../utils/progress';
+import { advanceStage, saveTestResult, getTestResult, getCurrentStage } from '../../utils/progress';
 
 const Test = ({ onComplete, onClose, onShowResult }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -11,14 +11,15 @@ const Test = ({ onComplete, onClose, onShowResult }) => {
   const [showResult, setShowResult] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
   const [isCalculating, setIsCalculating] = useState(false);
+  const [isFirstCompletion, setIsFirstCompletion] = useState(true);
 
   useEffect(() => {
     const savedResult = getTestResult();
     if (savedResult !== null) {
       setShowResult(true);
+      setIsFirstCompletion(false);
       setAnswers(prev => {
         const total = savedResult;
-        // Distribuimos el total entre las respuestas para mantener la suma
         const answersCount = prev.length;
         const baseValue = Math.floor(total / answersCount);
         const remainder = total % answersCount;
@@ -54,11 +55,10 @@ const Test = ({ onComplete, onClose, onShowResult }) => {
       const finalScore = answers.reduce((a, b) => a + b, 0);
       setIsCalculating(false);
       setShowResult(true);
-      // Guardamos el resultado y avanzamos el stage
       saveTestResult(finalScore);
-      advanceStage();
-      if (onComplete) {
-        onComplete(finalScore);
+      
+      if (isFirstCompletion) {
+        advanceStage();
       }
     }, 4000);
   };

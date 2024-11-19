@@ -1,15 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Question from './Question';
 import Result from './Result';
 import { questions } from './testData';
 import './Test.css';
 
-const Test = ({ onComplete, onClose }) => {
+const Test = ({ onComplete, onClose, onShowResult }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState(new Array(questions.length).fill(0));
   const [showResult, setShowResult] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
   const [isCalculating, setIsCalculating] = useState(false);
+
+  useEffect(() => {
+    if (onShowResult) {
+      onShowResult(showResult);
+    }
+  }, [showResult, onShowResult]);
 
   const handleAnswer = (points) => {
     const newAnswers = [...answers];

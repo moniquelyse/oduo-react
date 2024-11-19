@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import './DrawerContent.css';
 import Test from '../Test/Test';
 
-const DrawerContent = ({ stage, onClose }) => {
+const DrawerContent = ({ stage, onClose, onHideCloseButton }) => {
   const handleAnimatedClose = () => {
     const drawer = document.querySelector('.drawer');
     drawer.classList.add('closing');
@@ -12,8 +12,10 @@ const DrawerContent = ({ stage, onClose }) => {
     }, 300);
   };
 
-  const handleTestComplete = (score) => {
-    console.log('Test completado con puntuación:', score);
+  const handleShowResult = (isShowingResult) => {
+    if (onHideCloseButton) {
+      onHideCloseButton(isShowingResult);
+    }
   };
 
   useEffect(() => {
@@ -37,7 +39,10 @@ const DrawerContent = ({ stage, onClose }) => {
   if (stage.id === 0) {
     return (
       <div className="drawer-stage-content">
-        <Test onClose={handleAnimatedClose} />
+        <Test 
+          onClose={handleAnimatedClose}
+          onShowResult={handleShowResult}
+        />
       </div>
     );
   }

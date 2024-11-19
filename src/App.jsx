@@ -10,7 +10,8 @@ function App() {
   const [activeBubble, setActiveBubble] = useState(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [pressedStage, setPressedStage] = useState(null);
-  const [activeDrawerStage, setActiveDrawerStage] = useState(null);
+  const [activeDrawerStage, setActiveDrawerStage] = useState(0);
+  const [hideCloseButton, setHideCloseButton] = useState(false);
 
   const handleBubbleOpen = (stageIndex) => {
     setActiveBubble(stageIndex);
@@ -30,7 +31,6 @@ function App() {
 
   const handleDrawerClose = () => {
     setIsDrawerOpen(false);
-    setActiveDrawerStage(null);
   };
 
   return (
@@ -92,8 +92,16 @@ function App() {
         <p>2024 Ordenar.me ® Todos los derechos reservados</p>
       </div>
 
-      <Drawer isOpen={isDrawerOpen} onClose={handleDrawerClose}>
-        <DrawerContent stage={stages[activeDrawerStage]} onClose={handleDrawerClose} />
+      <Drawer 
+        isOpen={isDrawerOpen} 
+        onClose={handleDrawerClose}
+        hideCloseButton={hideCloseButton}
+      >
+        <DrawerContent 
+          stage={stages[activeDrawerStage]} 
+          onClose={handleDrawerClose}
+          onHideCloseButton={setHideCloseButton}
+        />
       </Drawer>
     </main>
   );

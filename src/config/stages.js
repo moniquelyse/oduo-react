@@ -11,14 +11,15 @@ export const stages = [
   },
   {
     id: 1,
-    title: "Primera Misión",
-    subtitle: "Descubre tu camino",
+    title: "Etapa bonus EtM",
+    subtitle: "Tu sueño financiero",
     content: {
       type: "content",
-      description: "Aquí va el contenido de la primera misión",
+      description: "Si te encuentras en EtM, encuentra nuestro stand y deposita en el buzón tu sueño financiero. Con esto tendrás una oportunidad más de ganar un cupo gratis a nuestro próximo taller de finanzas personales.",
       tasks: [
-        "Tarea 1: Hacer esto",
-        "Tarea 2: Hacer aquello"
+        "Tarea 1: Encontrar el stand de Ordenar.me",
+        "Tarea 2: Tomar un papel del color que prefieras y escribir tu sueño financiero",
+        "Tarea 3: Depositas el papel en el buzón y listo"
       ]
     }
   },

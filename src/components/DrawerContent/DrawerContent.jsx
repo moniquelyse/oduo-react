@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import './DrawerContent.css';
 import Test from '../Test/Test';
+import { getTestUserName } from '../../utils/progress';
 
 const DrawerContent = ({ stage, onClose, onHideCloseButton, onUserNameChange }) => {
   const handleAnimatedClose = () => {
@@ -50,20 +51,32 @@ const DrawerContent = ({ stage, onClose, onHideCloseButton, onUserNameChange }) 
 
   return (
     <div className="drawer-stage-content">
-      <h2>{stage.title}</h2>
-      <h3>{stage.subtitle}</h3>
-      {stage.content.type === 'typeform' ? (
-        <div className="typeform-container">
-          <p>{stage.content.description}</p>
-        </div>
+      {stage.id === 0 ? (
+        <Test 
+          onClose={handleAnimatedClose}
+          onShowResult={handleShowResult}
+          onUserNameChange={onUserNameChange}
+        />
       ) : (
-        <div className="content-container">
-          <p>{stage.content.description}</p>
-          <ul>
-            {stage.content.tasks.map((task, index) => (
-              <li key={index}>{task}</li>
-            ))}
-          </ul>
+        <div className="result-like-container">
+          <div className="personality-type">
+            <p className="overline">¡Vamos bien,<br/>{getTestUserName() || 'aprendiz'}! 💪</p>
+            <h2 className="title">{stage.title}<br/><span className="bold">{stage.subtitle}</span></h2>
+            <p className="description">{stage.content.description}</p>
+            {stage.content.tasks && (
+              <ul className="tasks-list">
+                {stage.content.tasks.map((task, index) => (
+                  <li key={index}>{task}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <button 
+            className="result-button"
+            onClick={handleAnimatedClose}
+          >
+            Entendido
+          </button>
         </div>
       )}
     </div>

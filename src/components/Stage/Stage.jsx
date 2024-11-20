@@ -18,7 +18,9 @@ const Stage = ({
   const [isPlatformPressed, setIsPlatformPressed] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.stopPropagation();
+    
     if (isPressed) {
       setIsReleasing(true);
       setIsPlatformPressed(false);
@@ -52,7 +54,10 @@ const Stage = ({
 
   return (
     <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <div className={`stage ${disabled ? 'disabled' : ''}`} onClick={handleClick}>
+      <div 
+        className={`stage ${disabled ? 'disabled' : ''}`} 
+        onClick={handleClick}
+      >
         <div 
           className={`stage-top-platform ${isPressed ? 'pressed' : ''} ${isReleasing ? 'release' : ''}`}
           onAnimationEnd={() => setIsReleasing(false)}

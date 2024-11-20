@@ -23,6 +23,19 @@ function App() {
     }
   }, [currentStage]);
 
+  useEffect(() => {
+    const handleGlobalClick = (e) => {
+      if (activeBubble !== null && 
+          !e.target.closest('.stage-top-platform') && 
+          !e.target.closest('.bubble')) {
+        handleBubbleClose();
+      }
+    };
+
+    document.addEventListener('click', handleGlobalClick);
+    return () => document.removeEventListener('click', handleGlobalClick);
+  }, [activeBubble]);
+
   const handleBubbleOpen = (stageIndex) => {
     setActiveBubble(stageIndex);
     setPressedStage(stageIndex);

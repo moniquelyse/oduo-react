@@ -29,7 +29,7 @@
   transition: background-color 0.2s;
 }
 
-.answer-button:hover {
+.answer-button:active {
   background: rgb(120 66 205);
 }
 

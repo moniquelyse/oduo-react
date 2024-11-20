@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Bubble from '../Bubble/Bubble';
 import Drawer from '../Drawer/Drawer';
 import './Stage.css';
@@ -16,7 +16,33 @@ const Stage = ({
 }) => {
   const [isReleasing, setIsReleasing] = useState(false);
   const [isPlatformPressed, setIsPlatformPressed] = useState(false);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const stageRef = useRef(null);
+
+  useEffect(() => {
+    if (!isPressed && isPlatformPressed) {
+      setIsReleasing(true);
+      setIsPlatformPressed(false);
+    }
+  }, [isPressed, isPlatformPressed]);
+
+  useEffect(() => {
+    if (isActive && stageRef.current) {
+      const bubble = stageRef.current.querySelector('.bubble-container');
+      if (bubble) {
+        const bubbleRect = bubble.getBoundingClientRect();
+        const bottomOffset = bubbleRect.bottom + 32; // 32px de margen extra
+        const windowHeight = window.innerHeight;
+        
+        if (bottomOffset > windowHeight) {
+          const scrollNeeded = bottomOffset - windowHeight;
+          window.scrollBy({
+            top: scrollNeeded,
+            behavior: 'smooth'
+          });
+        }
+      }
+    }
+  }, [isActive]);
 
   const handleClick = (e) => {
     e.stopPropagation();
@@ -45,15 +71,11 @@ const Stage = ({
     }
   };
 
-  const handleBubbleButtonClick = () => {
-    setIsDrawerOpen(true);
-    setIsReleasing(true);
-    setIsPlatformPressed(false);
-    onBubbleClose();
-  };
-
   return (
-    <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <div 
+      ref={stageRef}
+      style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+    >
       <div 
         className={`stage ${disabled ? 'disabled' : ''}`} 
         onClick={handleClick}

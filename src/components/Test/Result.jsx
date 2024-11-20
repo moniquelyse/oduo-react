@@ -1,7 +1,7 @@
 import { personalityTypes } from './testData';
 import './Result.css';
 
-const Result = ({ score }) => {
+const Result = ({ score, userName }) => {
   const getPersonalityType = (score) => {
     if (score <= 10) return "D";
     if (score <= 17) return "C";
@@ -11,13 +11,15 @@ const Result = ({ score }) => {
 
   const type = getPersonalityType(score);
   const result = personalityTypes[type];
+  const description = result.description.replace('{name}', userName || '');
 
   return (
     <div className="result-container">
-      <h2>Tu resultado</h2>
       <div className="personality-type">
-        <h3>{result.title}</h3>
-        <p>{result.description}</p>
+        <p className="overline">¡Felicitaciones,<br />
+        {userName}! 👋</p>
+        <h2 className="title">Tu Personalidad Financiera® es<br/><span className="bold">{result.title}</span></h2>
+        <p className="description">{description}</p>
       </div>
     </div>
   );

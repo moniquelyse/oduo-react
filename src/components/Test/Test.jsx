@@ -3,7 +3,7 @@ import Question from './Question';
 import Result from './Result';
 import { questions } from './testData';
 import './Test.css';
-import { advanceStage, saveTestResult, getTestResult, getCurrentStage } from '../../utils/progress';
+import { advanceStage, saveTestResult, getTestResult, getCurrentStage, getTestUserName } from '../../utils/progress';
 import LeadForm from '../LeadForm/LeadForm';
 
 const Test = ({ onClose, onShowResult }) => {
@@ -17,13 +17,17 @@ const Test = ({ onClose, onShowResult }) => {
   const [formEmail, setFormEmail] = useState('');
   const [savedScore, setSavedScore] = useState(null);
   const [isFirstCompletion, setIsFirstCompletion] = useState(true);
+  const [savedUserName, setSavedUserName] = useState('');
   const totalSteps = 8;
 
   // Verificar resultado guardado y first completion al montar
   useEffect(() => {
     const savedResult = getTestResult();
+    const savedName = getTestUserName();
     if (savedResult !== null) {
       setSavedScore(savedResult);
+      setSavedUserName(savedName);
+      setFormName(savedName);
       setShowResult(true);
       setIsFirstCompletion(false);
     }
@@ -79,8 +83,9 @@ const Test = ({ onClose, onShowResult }) => {
     setTimeout(() => {
       setIsCalculating(false);
       setShowResult(true);
-      saveTestResult(finalScore);
+      saveTestResult(finalScore, name);
       setSavedScore(finalScore);
+      setSavedUserName(name);
       
       if (isFirstCompletion) {
         advanceStage();
@@ -165,7 +170,7 @@ const Test = ({ onClose, onShowResult }) => {
       <div className="test-container">
         <Result 
           score={savedScore || answers.reduce((a, b) => a + b, 0)} 
-          userName={formName}
+          userName={savedUserName || formName}
         />
         <button 
           className="result-button"
@@ -184,6 +189,7 @@ const Test = ({ onClose, onShowResult }) => {
             setFormName('');
             setFormEmail('');
             setSavedScore(null);
+            setSavedUserName('');
           }}
         >
           Repetir el test

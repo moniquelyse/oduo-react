@@ -46,22 +46,16 @@ export const resetProgress = () => {
   }
 };
 
-export const saveTestResult = (score) => {
-  try {
-    localStorage.setItem(TEST_RESULT_KEY, score.toString());
-    return true;
-  } catch (e) {
-    console.error('Error saving test result:', e);
-    return false;
-  }
+export const saveTestResult = (score, userName) => {
+  localStorage.setItem('testScore', score.toString());
+  localStorage.setItem('testUserName', userName);
 };
 
 export const getTestResult = () => {
-  try {
-    const result = localStorage.getItem(TEST_RESULT_KEY);
-    return result ? parseInt(result) : null;
-  } catch (e) {
-    console.error('Error getting test result:', e);
-    return null;
-  }
+  const score = localStorage.getItem('testScore');
+  return score ? parseInt(score) : null;
+};
+
+export const getTestUserName = () => {
+  return localStorage.getItem('testUserName') || '';
 }; 

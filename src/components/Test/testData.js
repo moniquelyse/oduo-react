@@ -68,18 +68,18 @@ export const questions = [
 export const personalityTypes = {
   A: {
     title: "Lucreci@ Fortunati",
-    description: "Balance máximo. Sabes cuándo invertir y cuándo gastar. ¿Pero a qué costo?"
+    description: "Balance máximo, {name}. Sabes cuándo invertir y cuándo gastar. ¿Pero a qué costo?"
   },
   B: {
     title: "Prudenci@ Segurini",
-    description: "Tanto amor por el orden y el ahorro puede ser muy bueno, siempre cuando no limite el poder crecer e ir un poco más allá."
+    description: "Tanto amor por el orden y el ahorro puede ser muy bueno, {name}, siempre y cuando no limite el poder crecer e ir un poco más allá."
   },
   C: {
     title: "Gaston@ Dell' Oro",
-    description: "Amas gastar y disfrutar hasta que, por experiencia propia, gastar más de lo que se puede te genera problemas."
+    description: "{name}, amas gastar y disfrutar hasta que, por experiencia propia, gastar más de lo que se puede te genera problemas."
   },
   D: {
     title: "Inocenci@ Scappatoria",
-    description: "Podríamos decir que quieres vivir en paz, en armonía y no tener que atender temas tan \"mundanos\" como el dinero. Por lo mismo, no queremos cambiarte, queremos potenciarte más allá del típico \"pero sólo hazlo y ya\"."
+    description: "{name}, podríamos decir que quieres vivir en paz, en armonía y no tener que atender temas tan \"mundanos\" como el dinero."
   }
 }; 

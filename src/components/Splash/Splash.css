@@ -1,0 +1,76 @@
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+  pointer-events: none;
+}
+
+.splash-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 100px);
+  background: black;
+  z-index: 1000;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    50% 95%,
+    0 100%
+  );
+}
+
+.splash-overlay.animate {
+  animation: revealApp 1.5s cubic-bezier(0.6, 0, 0.4, 1) forwards;
+  animation-delay: 0.8s;
+}
+
+.logo-wrapper {
+  z-index: 1001;
+}
+
+.splash-logo {
+  width: 80px;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.splash-screen.animate .splash-logo {
+  animation: logoLifecycle 1s ease-out forwards;
+}
+
+@keyframes logoLifecycle {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes revealApp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+} 

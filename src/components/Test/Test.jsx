@@ -92,7 +92,7 @@ const Test = ({ onClose, onShowResult, onUserNameChange }) => {
         advanceStage();
         setIsFirstCompletion(false);
       }
-    }, 4000);
+    }, 3000);
   };
 
   const handlePrevious = () => {

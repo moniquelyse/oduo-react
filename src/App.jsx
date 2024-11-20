@@ -55,7 +55,13 @@ function App() {
         <div className="chapter">
           <p className="overline">CAPÍTULO I</p>
           <h1 className="title">LA INICIACIÓN</h1>
-          <p className="intro">{userName} se compromete a hacer las misiones que se le encomiendan</p>
+          <p className="intro">
+            {getTestUserName() ? (
+              <span className="username">{userName}</span>
+            ) : (
+              userName
+            )} se compromete a hacer las misiones que se le encomiendan
+          </p>
           
           <div className="stages stages-1">
             {stages.map((stage, index) => (

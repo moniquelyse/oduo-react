@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import './DrawerContent.css';
 import Test from '../Test/Test';
 
-const DrawerContent = ({ stage, onClose, onHideCloseButton }) => {
+const DrawerContent = ({ stage, onClose, onHideCloseButton, onUserNameChange }) => {
   const handleAnimatedClose = () => {
     const drawer = document.querySelector('.drawer');
     drawer.classList.add('closing');
@@ -42,6 +42,7 @@ const DrawerContent = ({ stage, onClose, onHideCloseButton }) => {
         <Test 
           onClose={handleAnimatedClose}
           onShowResult={handleShowResult}
+          onUserNameChange={onUserNameChange}
         />
       </div>
     );

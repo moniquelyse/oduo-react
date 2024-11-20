@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Stage from './components/Stage/Stage';
 import { bubbleContent } from './data/bubbleContent';
 import './styles/global.css';
 import Drawer from './components/Drawer/Drawer';
 import { stages, currentStage } from './config/stages';
 import DrawerContent from './components/DrawerContent/DrawerContent';
-import { getCurrentStage } from './utils/progress';
+import { getCurrentStage, getTestUserName } from './utils/progress';
 
 function App() {
   const [activeBubble, setActiveBubble] = useState(null);
@@ -14,6 +14,14 @@ function App() {
   const [activeDrawerStage, setActiveDrawerStage] = useState(0);
   const [hideCloseButton, setHideCloseButton] = useState(false);
   const [currentStage, setCurrentStage] = useState(() => getCurrentStage());
+  const [userName, setUserName] = useState(() => getTestUserName() || 'El aprendiz');
+
+  useEffect(() => {
+    const savedName = getTestUserName();
+    if (savedName) {
+      setUserName(savedName);
+    }
+  }, [currentStage]);
 
   const handleBubbleOpen = (stageIndex) => {
     setActiveBubble(stageIndex);
@@ -47,7 +55,7 @@ function App() {
         <div className="chapter">
           <p className="overline">CAPÍTULO I</p>
           <h1 className="title">LA INICIACIÓN</h1>
-          <p className="intro">El aprendiz se compromete a hacer las misiones que se le encomiendan</p>
+          <p className="intro">{userName} se compromete a hacer las misiones que se le encomiendan</p>
           
           <div className="stages stages-1">
             {stages.map((stage, index) => (
@@ -105,6 +113,7 @@ function App() {
           stage={stages[activeDrawerStage]} 
           onClose={handleDrawerClose}
           onHideCloseButton={setHideCloseButton}
+          onUserNameChange={setUserName}
         />
       </Drawer>
     </main>

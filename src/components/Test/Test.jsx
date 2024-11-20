@@ -6,7 +6,7 @@ import './Test.css';
 import { advanceStage, saveTestResult, getTestResult, getCurrentStage, getTestUserName } from '../../utils/progress';
 import LeadForm from '../LeadForm/LeadForm';
 
-const Test = ({ onClose, onShowResult }) => {
+const Test = ({ onClose, onShowResult, onUserNameChange }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState(new Array(questions.length).fill(0));
   const [showResult, setShowResult] = useState(false);
@@ -86,6 +86,7 @@ const Test = ({ onClose, onShowResult }) => {
       saveTestResult(finalScore, name);
       setSavedScore(finalScore);
       setSavedUserName(name);
+      onUserNameChange(name);
       
       if (isFirstCompletion) {
         advanceStage();

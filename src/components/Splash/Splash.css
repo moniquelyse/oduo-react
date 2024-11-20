@@ -29,8 +29,8 @@
 }
 
 .splash-overlay.animate {
-  animation: revealApp 1.5s cubic-bezier(0.6, 0, 0.4, 1) forwards;
-  animation-delay: 0.8s;
+  animation: revealApp 1.3s cubic-bezier(0.6, 0, 0.4, 1) forwards;
+  animation-delay: 0.6s;
 }
 
 .logo-wrapper {

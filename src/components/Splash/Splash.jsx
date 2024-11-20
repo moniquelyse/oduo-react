@@ -5,8 +5,8 @@ const Splash = ({ onFinish }) => {
   const [startAnimation, setStartAnimation] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setStartAnimation(true), 800);
-    setTimeout(() => onFinish(), 3000);
+    setTimeout(() => setStartAnimation(true), 500);
+    setTimeout(() => onFinish(), 2500);
   }, []);
 
   return (

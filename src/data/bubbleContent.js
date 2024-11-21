@@ -19,11 +19,11 @@ export const bubbleContent = {
   },
   stage5: {
     title: "Cerdicornio trabajando 🐷✨",
-    text: "Y tendrá desafíos, recompensas y quizás alguna que otra sorpresa."
+    text: "Ya tendrá desafíos, recompensas y quizás alguna que otra sorpresa."
   },
   stage6: {
     title: "Todo tiene un comienzo 🌱",
-    text: "Quizás ahora no lo veas, pero cada paso que das te acerca a tu mejor versión financiera. ¡Sigue avanzando!"
+    text: "Quizás ahora no lo veas, pero cada esfuerzo por mejorar te acerca un poco más a tus 'finanzas intencionales'."
   },
   stage7: {
     title: "Finanzas en modo sigiloso 🕵️‍♂️",

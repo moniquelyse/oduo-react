@@ -11,8 +11,7 @@ export const stages = [
   },
   {
     id: 1,
-    title: "Duplica tus chances de ganar un cupo gratuito a nuestro",
-    subtitle: "Taller de presupuesto",
+    title: "Duplica tus chances de ganar un cupo gratuito a nuestro Taller de presupuesto",
     content: {
       type: "content",
       description: "Si te encuentras en EtMday 2024:",

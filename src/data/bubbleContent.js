@@ -14,24 +14,24 @@ export const bubbleContent = {
     text: "Cuando llegue el momento, tendremos desafíos diseñados para ti. Mientras tanto, disfruta de este intermedio."
   },
   stage4: {
-    title: "¿Ya sientes la intriga? 😏",
-    text: "Esto será mucho más interactivo en la app real. Por ahora, considera esto un 'modo creativo'. ¡Prometemos que valdrá la pena!"
-  },
-  stage5: {
     title: "Cerdicornio trabajando 🐷✨",
     text: "Ya tendrá desafíos, recompensas y quizás alguna que otra sorpresa."
   },
-  stage6: {
-    title: "Todo tiene un comienzo 🌱",
-    text: "Quizás ahora no lo veas, pero cada esfuerzo por mejorar te acerca un poco más a tus 'finanzas intencionales'."
-  },
-  stage7: {
-    title: "Finanzas en modo sigiloso 🕵️‍♂️",
-    text: "Shhh... este es un lugar secreto. Aquí se esconden grandes ideas (y, tal vez, algunos ahorros)."
-  },
-  stage8: {
+  stage5: {
     title: "¿Qué viene ahora?",
     text: "Gracias por entretenerte un rato con nosotros mientras estamos en modo construcción. ¡Nos vemos pronto en las etapas desbloqueadas!"
+  },
+  stage6: {
+    title: "Lorem ipsum",
+    text: "Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  },
+  stage7: {
+    title: "Lorem ipsum",
+    text: "Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  },
+  stage8: {
+    title: "Lorem ipsum",
+    text: "Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   },
   stage9: {
     title: "Lorem ipsum",

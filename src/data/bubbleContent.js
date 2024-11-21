@@ -31,7 +31,7 @@ export const bubbleContent = {
   },
   stage8: {
     title: "¿Qué viene ahora?",
-    text: "Gracias por entretenerte con nosotros mientras construimos algo increíble. ¡Nos vemos pronto en las etapas desbloqueadas!"
+    text: "Gracias por entretenerte un rato con nosotros mientras estamos en modo construcción. ¡Nos vemos pronto en las etapas desbloqueadas!"
   },
   stage9: {
     title: "Lorem ipsum",

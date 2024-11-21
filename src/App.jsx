@@ -71,13 +71,12 @@ function App() {
         <div className="content">
           <div className="chapter">
             <p className="overline">CAPÍTULO I</p>
-            <h1 className="title">LA INICIACIÓN</h1>
+            <h1 className="title">EL COMIENZO</h1>
             <p className="intro">
-              {getTestUserName() ? (
-                <span className="username">{userName}</span>
-              ) : (
-                userName
-              )} se compromete a hacer las misiones que se le encomiendan
+              Los primeros pasos hacia el bienestar financiero
+              {getTestUserName() && (
+                <span> de <span className="username">{userName}</span></span>
+              )}
             </p>
             
             <div className="stages stages-1">

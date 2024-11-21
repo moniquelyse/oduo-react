@@ -1,35 +1,37 @@
 export const bubbleContent = {
   stage1: {
-    title: "La iniciación",
-    text: "Tu educación financiera, tus experiencias, sentimientos y preferencias forman tu Personalidad Financiera®. Descúbrela en el test a continuación."
+    title: "¿Quién recorre el camino?",
+    text: "Descubre tu Personalidad Financiera® y conoce cómo te relacionas con las finanzas.",
+    disclaimer: "Al completar el test estarás participando por un cupo gratuito para nuestro Taller de presupuesto."
   },
   stage2: {
-    title: "El compromiso",
-    text: "Después de conocer tuPersonalidad Financiera®, es el momento del compromiso contigo mism@, ¿vamos?"
+    title: "Buzón de sueños financieros",
+    text: "Acércate a nuestro stand en EtMday 2024 y escribe tu sueño financiero.",
+    disclaimer: "Duplicarás tus posibilidades de ganar un cupo gratuito para nuestro Taller de presupuesto."
   },
   stage3: {
-    title: "Lorem ipsum",
-    text: "Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    title: "Spoiler alert: esta no es la app real 🙈",
+    text: "Cuando llegue el momento, tendremos desafíos diseñados para ti. Mientras tanto, disfruta de este intermedio."
   },
   stage4: {
-    title: "Lorem ipsum",
-    text: "Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    title: "¿Ya sientes la intriga? 😏",
+    text: "Esto será mucho más interactivo en la app real. Por ahora, considera esto un 'modo creativo'. ¡Prometemos que valdrá la pena!"
   },
   stage5: {
-    title: "Lorem ipsum",
-    text: "Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    title: "Cerdicornio trabajando 🐷✨",
+    text: "Y tendrá desafíos, recompensas y quizás alguna que otra sorpresa."
   },
   stage6: {
-    title: "Lorem ipsum",
-    text: "Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    title: "Todo tiene un comienzo 🌱",
+    text: "Quizás ahora no lo veas, pero cada paso que das te acerca a tu mejor versión financiera. ¡Sigue avanzando!"
   },
   stage7: {
-    title: "Lorem ipsum",
-    text: "Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    title: "Finanzas en modo sigiloso 🕵️‍♂️",
+    text: "Shhh... este es un lugar secreto. Aquí se esconden grandes ideas (y, tal vez, algunos ahorros)."
   },
   stage8: {
-    title: "Lorem ipsum",
-    text: "Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    title: "¿Qué viene ahora?",
+    text: "Gracias por entretenerte con nosotros mientras construimos algo increíble. ¡Nos vemos pronto en las etapas desbloqueadas!"
   },
   stage9: {
     title: "Lorem ipsum",

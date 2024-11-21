@@ -60,15 +60,15 @@ const DrawerContent = ({ stage, onClose, onHideCloseButton, onUserNameChange }) 
       ) : (
         <div className="result-like-container">
           <div className="personality-type">
-            <p className="overline">¡Vamos bien,<br/>{getTestUserName() || 'aprendiz'}! 💪</p>
+            <p className="overline">¡Hola,<br/>{getTestUserName() || 'aprendiz'}! 👋</p>
             <h2 className="title">{stage.title}<br/><span className="bold">{stage.subtitle}</span></h2>
             <p className="description">{stage.content.description}</p>
             {stage.content.tasks && (
-              <ul className="tasks-list">
+              <ol className="tasks-list">
                 {stage.content.tasks.map((task, index) => (
                   <li key={index}>{task}</li>
                 ))}
-              </ul>
+              </ol>
             )}
           </div>
           <button 

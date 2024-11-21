@@ -1,5 +1,5 @@
 .personality-type .overline {
-  opacity: 0.5;
+  color: #808080;
   margin-bottom: 48px;
   margin-top: 24px;
 }
@@ -14,6 +14,7 @@
 
 .personality-type .description {
   line-height: 1.6;
+  white-space: pre-wrap;
 }
 
 .result-container {

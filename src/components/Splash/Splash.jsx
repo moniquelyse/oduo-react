@@ -6,7 +6,7 @@ const Splash = ({ onFinish }) => {
 
   useEffect(() => {
     setTimeout(() => setStartAnimation(true), 500);
-    setTimeout(() => onFinish(), 2500);
+    setTimeout(() => onFinish(), 4500);
   }, []);
 
   return (
@@ -15,6 +15,7 @@ const Splash = ({ onFinish }) => {
         <div className="logo-wrapper">
           <img src="/img/o-logo.svg" alt="Logo" className="splash-logo" />
         </div>
+        <div className="splash-disclaimer">Esta es una experiencia demo <br/>de la futura App de Ordenar.me</div>
       </div>
       <div className={`splash-overlay ${startAnimation ? 'animate' : ''}`} />
     </>

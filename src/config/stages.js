@@ -11,15 +11,15 @@ export const stages = [
   },
   {
     id: 1,
-    title: "Etapa bonus EtM",
-    subtitle: "Tu sueño financiero",
+    title: "Duplica tus chances de ganar un cupo gratuito a nuestro",
+    subtitle: "Taller de presupuesto",
     content: {
       type: "content",
-      description: "Si te encuentras en EtM, encuentra nuestro stand y deposita en el buzón tu sueño financiero. Con esto tendrás una oportunidad más de ganar un cupo gratis a nuestro próximo taller de finanzas personales.",
+      description: "Si te encuentras en EtMday 2024:",
       tasks: [
-        "Tarea 1: Encontrar el stand de Ordenar.me",
-        "Tarea 2: Tomar un papel del color que prefieras y escribir tu sueño financiero",
-        "Tarea 3: Depositas el papel en el buzón y listo"
+        "Acércate a nuestro stand",
+        "Escribe tu sueño financiero",
+        "Deposítalo en el buzón de los sueños financieros de Cerdicornio, nuestra mascota de Ordenar.me"
       ]
     }
   },

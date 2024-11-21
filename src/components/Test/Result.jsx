@@ -17,7 +17,7 @@ const Result = ({ score, userName }) => {
     <div className="result-container">
       <div className="personality-type">
         <p className="overline">¡Felicitaciones,<br />
-        {userName}! 👋</p>
+        {userName}! ✨</p>
         <h2 className="title">Tu Personalidad Financiera® es<br/><span className="bold">{result.title}</span></h2>
         <p className="description">{description}</p>
       </div>

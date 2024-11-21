@@ -69,7 +69,7 @@
 }
 
 .result-like-container .overline {
-  opacity: 0.5;
+  color: #808080;
   margin-bottom: 48px;
   margin-top: 24px;
   letter-spacing: 0.1rem;

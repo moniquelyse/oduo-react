@@ -68,18 +68,18 @@ export const questions = [
 export const personalityTypes = {
   A: {
     title: "Lucreci@ Fortunati",
-    description: "Balance máximo, {name}. Sabes cuándo invertir y cuándo gastar. ¿Pero a qué costo?"
+    description: "Para Lucreci@ el mundo de las finanzas es fascinante. Comprendes buena parte de sus complejidades y manejas bien las diferentes áreas. \n\nEl dinero sirve para hacer más dinero. Saber mucho sobre la industria también genera una perspectiva de \"siempre puedo estar mejor\", terminando en muchas horas gastadas para obtener ese preciado retorno. \n\nSin embargo, es importante considerar que el dinero debe mejorar tu vida y no solo acumularse, la meta es que tus finanzas mejoren tu vida, no que sean un trabajo más. Vivir de acuerdo a un plan financiero alineado con tu personalidad te ayudará a alcanzar una mejor calidad de vida."
   },
   B: {
     title: "Prudenci@ Segurini",
-    description: "Tanto amor por el orden y el ahorro puede ser muy bueno, {name}, siempre y cuando no limite el poder crecer e ir un poco más allá."
+    description: "Podríamos decir que el slogan de vida de Prudenci@ es \"quien guarda siempre tiene\". \n\nSon personas manejan sus finanzas en base al ahorro y generalmente piensan mucho antes de realizar una compra. El dinero es un medio de seguridad, imposible disponer de lo que no se ha guardado, por lo que a ahorrar se ha dicho. \n\nAlgunos gastos son necesarios, pero si nos aferramos solamente al ahorro dejaremos pasar oportunidades que podrían mejorar nuestra calidad de vida significativamente en el futuro. \n\nVivir de acuerdo a un plan financiero alineado con tu personalidad te ayudará a alcanzar una mejor calidad de vida."
   },
   C: {
     title: "Gaston@ Dell' Oro",
-    description: "{name}, amas gastar y disfrutar hasta que, por experiencia propia, gastar más de lo que se puede te genera problemas."
+    description: "Para Gastón@ el dinero es algo hermoso que le permite tener todas las maravillosas experiencias y cosas que quiere. \n\nLo que define propiamente a Gaston@ Dell’ Oro es el profundo placer por la experiencia de adquisición, ya sea comprar bienes, servicios o experiencias. A todas las personas les gusta comprar, pero a Gaston@ una compra satisfactoria podría incluso realinearle los chakras. \n\nEs importante saber disfrutar el dinero, porque para eso está, pero también es importante saber que tu futuro está asegurado a pesar de tus impulsos de compra. Vivir de acuerdo a un plan financiero alineado con tu personalidad te ayudará a alcanzar una mejor calidad de vida."
   },
   D: {
     title: "Inocenci@ Scappatoria",
-    description: "{name}, podríamos decir que quieres vivir en paz, en armonía y no tener que atender temas tan \"mundanos\" como el dinero."
+    description: "Para Inocenci@ el mundo de las finanzas puede parecer complejo o una tarea abrumadora. \n\nIndependientemente de que tenga mayores o menores conocimientos financieros, lo que define propiamente a Inocenci@ Scappatoria es el hecho de que los temas financieros le causen agotamiento emocional y mental. No le dan ganas de enfrentarlo y sueña con ojalá nunca tener que hacerse cargo de temas financieros. \n\nSin embargo, nos guste o no, el dinero es el medio con el cual nuestra sociedad realiza transacciones de valor (bienes y servicios). Vivir de acuerdo a un plan financiero alineado con tu personalidad te ayudará a alcanzar una mejor calidad de vida."
   }
 }; 

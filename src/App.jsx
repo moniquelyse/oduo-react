@@ -120,7 +120,7 @@ function App() {
         </div>
 
         <img src="/img/oinc-linear.png" alt="Oinc" className="oinc" />
-        <img src="/img/coin-linear.png" alt="Coin" className="coin" />
+        {/* <img src="/img/coin-linear.png" alt="Coin" className="coin" /> */}
 
         <div className="credits">
           <p>2024 Ordenar.me ® Todos los derechos reservados</p>

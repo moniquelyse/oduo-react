@@ -60,45 +60,6 @@ export const stages = [
         "Tarea 2: Otra cosa"
       ]
     }
-  },
-  {
-    id: 5,
-    title: "Quinta Misión",
-    subtitle: "Conquista el universo",
-    content: {
-      type: "content",
-      description: "Contenido de la quinta misión",
-      tasks: [
-        "Tarea 1: Algo más",
-        "Tarea 2: Otra cosa"
-      ]
-    }
-  },
-  {
-    id: 6,
-    title: "Sexta Misión",
-    subtitle: "Conquista el universo",
-    content: {
-      type: "content",
-      description: "Contenido de la sexta misión",
-      tasks: [
-        "Tarea 1: Algo más",
-        "Tarea 2: Otra cosa"
-      ]
-    }
-  },
-  {
-    id: 7,
-    title: "Séptima Misión",
-    subtitle: "Conquista el universo",
-    content: {
-      type: "content",
-      description: "Contenido de la séptima misión",
-      tasks: [
-        "Tarea 1: Algo más",
-        "Tarea 2: Otra cosa"
-      ]
-    }
   }
 ];
 

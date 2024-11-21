@@ -11,15 +11,15 @@ export const bubbleContent = {
   },
   stage3: {
     title: "Spoiler alert: esta no es la app real 🙈",
-    text: "Cuando llegue el momento, tendremos desafíos diseñados para ti. Mientras tanto, disfruta de este intermedio."
+    text: "Cuando llegue el momento, tendremos desafíos diseñados para ti. Mientras tanto, puedes explorar este demo."
   },
   stage4: {
-    title: "Cerdicornio trabajando 🐷✨",
-    text: "Ya tendrá desafíos, recompensas y quizás alguna que otra sorpresa."
+    title: "Cerdicornio trabajando 🐷",
+    text: "Estamos creando una nueva forma de manejar las finanzas personales, para que sean como un juego genial con recompensas y sorpresas."
   },
   stage5: {
-    title: "¿Qué viene ahora?",
-    text: "Gracias por entretenerte un rato con nosotros mientras estamos en modo construcción. ¡Nos vemos pronto en las etapas desbloqueadas!"
+    title: "¿Qué viene ahora? 💫",
+    text: "Gracias por entretenerte un rato con nosotros mientras estamos en modo construcción, te mantendremos al tanto. ¡Cuídate!"
   },
   stage6: {
     title: "Lorem ipsum",

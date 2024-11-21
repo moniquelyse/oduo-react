@@ -18,7 +18,7 @@ export const stages = [
       tasks: [
         "Acércate a nuestro stand",
         "Escribe tu sueño financiero",
-        "Deposítalo en el buzón de los sueños financieros de Cerdicornio, nuestra mascota de Ordenar.me"
+        "Deposítalo en el buzón de Cerdicornio, nuestra mascota"
       ]
     }
   },
